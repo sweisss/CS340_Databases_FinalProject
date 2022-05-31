@@ -162,7 +162,6 @@ INSERT INTO Problem VALUES (26, 14, 'Loose Wet', 1, 1);
 DROP TABLE IF EXISTS Elevation;
 
 --Create the Elevation table
--- TODO: Potentially simplify FKs with new problem id attr?
 CREATE TABLE Elevation (
     pid INTEGER NOT NULL,
     elevation INTEGER NOT NULL,
@@ -171,7 +170,34 @@ CREATE TABLE Elevation (
 );
 
 --Populate the Elevation table
-INSERT INTO Elevation VALUES ();
+INSERT INTO Elevation VALUES (0, 1);
+INSERT INTO Elevation VALUES (1, 1);
+INSERT INTO Elevation VALUES (2, 2);
+INSERT INTO Elevation VALUES (3, 3);
+INSERT INTO Elevation VALUES (4, 2);
+INSERT INTO Elevation VALUES (5, 3);
+INSERT INTO Elevation VALUES (6, 1);
+INSERT INTO Elevation VALUES (7, 2);
+INSERT INTO Elevation VALUES (8, 3);
+INSERT INTO Elevation VALUES (9, 1);
+INSERT INTO Elevation VALUES (10, 2);
+INSERT INTO Elevation VALUES (11, 3);
+INSERT INTO Elevation VALUES (12, 1);
+INSERT INTO Elevation VALUES (13, 2);
+INSERT INTO Elevation VALUES (14, 3);
+INSERT INTO Elevation VALUES (15, 1);
+INSERT INTO Elevation VALUES (16, 2);
+INSERT INTO Elevation VALUES (17, 3);
+INSERT INTO Elevation VALUES (18, 1);
+INSERT INTO Elevation VALUES (19, 2);
+INSERT INTO Elevation VALUES (20, 3);
+INSERT INTO Elevation VALUES (21, 1);
+INSERT INTO Elevation VALUES (22, 2);
+INSERT INTO Elevation VALUES (23, 3);
+INSERT INTO Elevation VALUES (24, 1);
+INSERT INTO Elevation VALUES (25, 2);
+INSERT INTO Elevation VALUES (26, 3);
+
 
 
 -- Aspect ----------------------------------------------------------------
@@ -180,13 +206,40 @@ DROP TABLE IF EXISTS Aspect;
 
 --Create the Aspect table
 CREATE TABLE Aspect (
-    fid INTEGER NOT NULL,
-    problem_number INTEGER NOT NULL,
-    aspect INTEGER NOT NULL,
-    PRIMARY KEY (fid, problem_number, aspect)
-    FOREIGN KEY (fid, problem_number) REFERENCES Problem (fid, problem_number)
+    pid INTEGER NOT NULL,
+    aspect VARCHAR(2) NOT NULL,
+    PRIMARY KEY (pid, aspect)
+    FOREIGN KEY (pid) REFERENCES Problem (pid)
 );
 
+--Populate the Aspect table
+INSERT INTO Aspect VALUES (0, 'N');
+INSERT INTO Aspect VALUES (1, 'NE');
+INSERT INTO Aspect VALUES (2, 'E');
+INSERT INTO Aspect VALUES (3, 'SE');
+INSERT INTO Aspect VALUES (4, 'S');
+INSERT INTO Aspect VALUES (5, 'SW');
+INSERT INTO Aspect VALUES (6, 'W');
+INSERT INTO Aspect VALUES (7, 'NW');
+INSERT INTO Aspect VALUES (8, 'N');
+INSERT INTO Aspect VALUES (9, 'NW');
+INSERT INTO Aspect VALUES (10, 'NE');
+INSERT INTO Aspect VALUES (11, 'N');
+INSERT INTO Aspect VALUES (12, 'NE');
+INSERT INTO Aspect VALUES (13, 'E');
+INSERT INTO Aspect VALUES (14, 'NE');
+INSERT INTO Aspect VALUES (15, 'E');
+INSERT INTO Aspect VALUES (16, 'N');
+INSERT INTO Aspect VALUES (17, 'NW');
+INSERT INTO Aspect VALUES (18, 'NW');
+INSERT INTO Aspect VALUES (19, 'W');
+INSERT INTO Aspect VALUES (20, 'NE');
+INSERT INTO Aspect VALUES (21, 'E');
+INSERT INTO Aspect VALUES (22, 'N');
+INSERT INTO Aspect VALUES (23, 'NW');
+INSERT INTO Aspect VALUES (24, 'E');
+INSERT INTO Aspect VALUES (25, 'S');
+INSERT INTO Aspect VALUES (26, 'SE');
 
 
 -- Observation ----------------------------------------------------------------
