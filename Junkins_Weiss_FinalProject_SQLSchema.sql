@@ -85,6 +85,26 @@ CREATE TABLE Forecast (
     FOREIGN KEY (issued_by) REFERENCES Forecaster(frcstr_id)
 );
 
+--Populate the Forecast table
+INSERT INTO Forecast VALUES (0, "1/1/2022", 0, 1, 1, 0, 0)
+INSERT INTO Forecast VALUES (1, "1/1/2022", 1, 1, 1, 1, 1)
+INSERT INTO Forecast VALUES (2, "1/1/2022", 2, 2, 3, 1, 2)
+INSERT INTO Forecast VALUES (3, "1/1/2022", 2, 2, 2, 4, 3)
+INSERT INTO Forecast VALUES (4, "1/1/2022", 1, 2, 3, 4, 4)
+
+INSERT INTO Forecast VALUES (5, "1/2/2022", 1, 1, 1, 0, 0)
+INSERT INTO Forecast VALUES (6, "1/2/2022", 2, 2, 2, 1, 1)
+INSERT INTO Forecast VALUES (7, "1/2/2022", 2, 2, 3, 1, 2)
+INSERT INTO Forecast VALUES (8, "1/2/2022", 3, 4, 4, 4, 3)
+INSERT INTO Forecast VALUES (9, "1/2/2022", 2, 2, 2, 4, 4)
+
+INSERT INTO Forecast VALUES (10, "1/3/2022", 1, 1, 1, 0, 0)
+INSERT INTO Forecast VALUES (11, "1/3/2022", 0, 1, 1, 1, 1)
+INSERT INTO Forecast VALUES (12, "1/3/2022", 0, 1, 1, 1, 2)
+INSERT INTO Forecast VALUES (13, "1/3/2022", 2, 2, 3, 4, 3)
+INSERT INTO Forecast VALUES (14, "1/3/2022", 1, 1, 1, 4, 4)
+
+
 
 
 -- Problem ----------------------------------------------------------------
