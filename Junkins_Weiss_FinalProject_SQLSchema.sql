@@ -36,8 +36,16 @@ CREATE TABLE Agency (
 
 --Clear the way for the Forecaster table.
 DROP TABLE IF EXISTS Forecaster;
+
 --Create the Forecaster table
---
+CREATE TABLE Forecaster (
+	frcstr_id INTEGER PRIMARY KEY,
+	fname TEXT NOT NULL,
+	lname TEXT NOT NULL,
+    agency_id INTEGER NOT NULL,
+    FOREIGN KEY (agency_id) REFERENCES Agency(agency_id)
+);
+
 
 --Clear the way for the Forecast table.
 DROP TABLE IF EXISTS Forecast;
