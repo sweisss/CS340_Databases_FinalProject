@@ -49,8 +49,19 @@ CREATE TABLE Forecaster (
 
 --Clear the way for the Forecast table.
 DROP TABLE IF EXISTS Forecast;
+
 --Create the Forecast table
---
+CREATE TABLE Forecast (
+	fid INTEGER PRIMARY KEY,
+	issue_date TEXT NOT NULL,
+	danger_below_treeline INTEGER NOT NULL,
+    danger_at_treeline INTEGER NOT NULL,
+    danger_above_treeline INTEGER NOT NULL,
+    issued_by INTEGER NOT NULL,
+    corresponds_to INTEGER NOT NULL, -- TODO: Reference zone somehow
+    FOREIGN KEY (issued_by) REFERENCES Forecaster(frcstr_id)
+);
+
 
 --Clear the way for the Problem table.
 DROP TABLE IF EXISTS Problem;
