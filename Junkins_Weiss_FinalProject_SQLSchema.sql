@@ -69,6 +69,7 @@ INSERT INTO Forecaster VALUES (7, "Joe", "Watkins", 4);
 
 
 
+-- Forecast ----------------------------------------------------------------
 --Clear the way for the Forecast table.
 DROP TABLE IF EXISTS Forecast;
 
@@ -85,6 +86,8 @@ CREATE TABLE Forecast (
 );
 
 
+
+-- Problem ----------------------------------------------------------------
 --Clear the way for the Problem table.
 DROP TABLE IF EXISTS Problem;
 
@@ -100,6 +103,8 @@ CREATE TABLE Problem (
 );
 
 
+
+-- Elevation ----------------------------------------------------------------
 --Clear the way for the Elevation table.
 DROP TABLE IF EXISTS Elevation;
 
@@ -114,6 +119,8 @@ CREATE TABLE Elevation (
 );
 
 
+
+-- Aspect ----------------------------------------------------------------
 --Clear the way for the Aspect table.
 DROP TABLE IF EXISTS Aspect;
 
@@ -127,6 +134,8 @@ CREATE TABLE Aspect (
 );
 
 
+
+-- Observation ----------------------------------------------------------------
 --Clear the way for the Observation table.
 DROP TABLE IF EXISTS Observation;
 
@@ -141,6 +150,8 @@ CREATE TABLE Observation (
 );
 
 
+
+-- Observer ----------------------------------------------------------------
 --Clear the way for the Observer table.
 DROP TABLE IF EXISTS Observer;
 
@@ -153,6 +164,8 @@ CREATE TABLE Observer (
 );
 
 
+
+-- Zone ----------------------------------------------------------------
 --Clear the way for the Zone table.
 DROP TABLE IF EXISTS Zone;
 
@@ -165,6 +178,8 @@ CREATE TABLE Zone (
 );
 
 
+
+-- Contribution ----------------------------------------------------------------
 --Clear the way for the Contribution table.
 DROP TABLE IF EXISTS Contribution;
 
