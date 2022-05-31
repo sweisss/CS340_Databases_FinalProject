@@ -104,6 +104,7 @@ CREATE TABLE Aspect (
     FOREIGN KEY (fid, problem_number) REFERENCES Problem (fid, problem_number)
 )
 
+
 --Clear the way for the Observation table.
 DROP TABLE IF EXISTS Observation;
 
@@ -129,12 +130,29 @@ CREATE TABLE Observer (
     observer_type TEXT NOT NULL,
 )
 
+
 --Clear the way for the Zone table.
 DROP TABLE IF EXISTS Zone;
+
 --Create the Zone table
---
+CREATE TABLE Zone (
+    zone_name TEXT NOT NULL,
+    agency_id INTEGER NOT NULL,
+    PRIMARY KEY (zone_name, agency_id),
+    FOREIGN KEY (agency_id) REFERENCES Agency(agency_id)
+)
+
 
 --Clear the way for the Contribution table.
 DROP TABLE IF EXISTS Contribution;
+
 --Create the Contribution table
---
+CREATE TABLE Contribution (
+    agency_id INTEGER NOT NULL,
+    observation_id INTEGER NOT NULL,
+    observer_id INTEGER NOT NULL,
+    PRIMARY KEY (agency_id, observation_id, observer_id),
+    FOREIGN KEY (agency_id) REFERENCES Agency(agency_id),
+    FOREIGN KEY (observation_id) REFERENCES Observation(observation_id),
+    FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
+)
