@@ -126,7 +126,7 @@ CREATE TABLE Problem (
     FOREIGN KEY (fid) REFERENCES Forecast(fid)
 );
 
-----Populate the Forecast table
+--Populate the Forecast table
 INSERT INTO Problem VALUES (0, 0, 'Loose Dry', 1, 1);
 INSERT INTO Problem VALUES (1, 0, 'Wind Slab', 2, 1);
 INSERT INTO Problem VALUES (2, 1, 'Storm Slab', 3, 4);
@@ -150,7 +150,7 @@ INSERT INTO Problem VALUES (19, 10, 'Cornice Collapse', 2, 2);
 INSERT INTO Problem VALUES (20, 11, 'Wind Slab', 2, 2);
 INSERT INTO Problem VALUES (21, 11, 'Persistent Slab', 1, 2);
 INSERT INTO Problem VALUES (22, 12, 'Wind Slab', 1, 3);
-INSERT INTO Problem VALUES (23, 12, 'Persistent Slab', 1, 1;
+INSERT INTO Problem VALUES (23, 12, 'Persistent Slab', 1, 1);
 INSERT INTO Problem VALUES (24, 13, 'Wet Slab', 2, 3);
 INSERT INTO Problem VALUES (25, 13, 'Loose Wet', 1, 3);
 INSERT INTO Problem VALUES (26, 14, 'Loose Wet', 1, 1);
@@ -164,13 +164,14 @@ DROP TABLE IF EXISTS Elevation;
 --Create the Elevation table
 -- TODO: Potentially simplify FKs with new problem id attr?
 CREATE TABLE Elevation (
-    fid INTEGER NOT NULL,
-    problem_number INTEGER NOT NULL,
+    pid INTEGER NOT NULL,
     elevation INTEGER NOT NULL,
-    PRIMARY KEY (fid, problem_number, elevation)
-    FOREIGN KEY (fid, problem_number) REFERENCES Problem (fid, problem_number)
+    PRIMARY KEY (pid, elevation)
+    FOREIGN KEY (pid) REFERENCES Problem (pid)
 );
 
+--Populate the Elevation table
+INSERT INTO Elevation VALUES ();
 
 
 -- Aspect ----------------------------------------------------------------
