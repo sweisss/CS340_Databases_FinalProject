@@ -25,8 +25,14 @@
 
 --Clear the way for the Agency table.
 DROP TABLE IF EXISTS Agency;
+
 --Create the Agency table
---
+CREATE TABLE Agency (
+	agency_id INTEGER PRIMARY KEY,
+	agency_name TEXT NOT NULL,
+	website_url TEXT NOT NULL,
+);
+
 
 --Clear the way for the Forecaster table.
 DROP TABLE IF EXISTS Forecaster;
