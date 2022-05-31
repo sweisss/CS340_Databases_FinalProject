@@ -10,6 +10,8 @@
 --before running the file from the command line, enter the following command:
 --$ sqlite3 FILENAME.db < FILENAME.sql
 
+--Alternatively, use the provided build script:
+--$ bash build_db.sh
 
 --For each table created, you should include: 
     --name (be descriptive) of each attribute
