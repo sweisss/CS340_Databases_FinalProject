@@ -84,8 +84,9 @@ CREATE TABLE Forecast (
     danger_at_treeline INTEGER NOT NULL,
     danger_above_treeline INTEGER NOT NULL,
     issued_by INTEGER NOT NULL,
-    corresponds_to INTEGER NOT NULL, -- TODO: Reference zone somehow
-    FOREIGN KEY (issued_by) REFERENCES Forecaster(frcstr_id)
+    corresponds_to INTEGER NOT NULL,
+    FOREIGN KEY (issued_by) REFERENCES Forecaster(frcstr_id),
+    FOREIGN KEY (corresponds_to) REFERENCES Zone(zone_id)
 );
 
 --Populate the Forecast table
@@ -116,14 +117,17 @@ DROP TABLE IF EXISTS Problem;
 
 --Create the Problem table
 CREATE TABLE Problem (
-	fid INTEGER,
-	problem_number TEXT NOT NULL, --TODO use id instead of two part PK?
+	pid INTEGER NOT NULL,
+    fid INTEGER NOT NULL,
 	problem_type TEXT NOT NULL,
-    size INTEGER NOT NULL,
-    likelihood INTEGER NOT NULL,
-    PRIMARY KEY (fid, problem_number), --TODO use id instead of two part PK?
+    size INTEGER,
+    likelihood INTEGER,
+    PRIMARY KEY (fid),
     FOREIGN KEY (fid) REFERENCES Forecast(fid)
 );
+
+----Populate the Forecast table
+INSERT INTO Problem VALUES (0, 0, 'Loose Dry', 1, 1);
 
 
 
