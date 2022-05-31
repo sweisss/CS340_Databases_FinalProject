@@ -30,7 +30,7 @@ DROP TABLE IF EXISTS Agency;
 CREATE TABLE Agency (
 	agency_id INTEGER PRIMARY KEY,
 	agency_name TEXT NOT NULL,
-	website_url TEXT NOT NULL,
+	website_url TEXT NOT NULL
 );
 
 
@@ -73,7 +73,7 @@ CREATE TABLE Problem (
 	problem_type TEXT NOT NULL,
     size INTEGER NOT NULL,
     likelihood INTEGER NOT NULL,
-    PRIMARY KEY (fid, problem_number) --TODO use id instead of two part PK?
+    PRIMARY KEY (fid, problem_number), --TODO use id instead of two part PK?
     FOREIGN KEY (fid) REFERENCES Forecast(fid)
 );
 
@@ -89,7 +89,7 @@ CREATE TABLE Elevation (
     elevation INTEGER NOT NULL,
     PRIMARY KEY (fid, problem_number, elevation)
     FOREIGN KEY (fid, problem_number) REFERENCES Problem (fid, problem_number)
-)
+);
 
 
 --Clear the way for the Aspect table.
@@ -100,9 +100,9 @@ CREATE TABLE Aspect (
     fid INTEGER NOT NULL,
     problem_number INTEGER NOT NULL,
     aspect INTEGER NOT NULL,
-    PRIMARY KEY (fid, problem_number, elevation)
+    PRIMARY KEY (fid, problem_number, aspect)
     FOREIGN KEY (fid, problem_number) REFERENCES Problem (fid, problem_number)
-)
+);
 
 
 --Clear the way for the Observation table.
@@ -116,7 +116,7 @@ CREATE TABLE Observation (
     obseration_location TEXT NOT NULL,
     observer_id INTEGER NOT NULL,
     FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
-)
+);
 
 
 --Clear the way for the Observer table.
@@ -127,8 +127,8 @@ CREATE TABLE Observer (
     observer_id INTEGER NOT NULL PRIMARY KEY,
     lname TEXT NOT NULL,
     fname TEXT NOT NULL,
-    observer_type TEXT NOT NULL,
-)
+    observer_type TEXT NOT NULL
+);
 
 
 --Clear the way for the Zone table.
@@ -140,7 +140,7 @@ CREATE TABLE Zone (
     agency_id INTEGER NOT NULL,
     PRIMARY KEY (zone_name, agency_id),
     FOREIGN KEY (agency_id) REFERENCES Agency(agency_id)
-)
+);
 
 
 --Clear the way for the Contribution table.
@@ -155,4 +155,4 @@ CREATE TABLE Contribution (
     FOREIGN KEY (agency_id) REFERENCES Agency(agency_id),
     FOREIGN KEY (observation_id) REFERENCES Observation(observation_id),
     FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
-)
+);
