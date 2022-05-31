@@ -80,13 +80,29 @@ CREATE TABLE Problem (
 
 --Clear the way for the Elevation table.
 DROP TABLE IF EXISTS Elevation;
+
 --Create the Elevation table
---
+-- TODO: Potentially simplify FKs with new problem id attr?
+CREATE TABLE Elevation (
+    fid INTEGER NOT NULL,
+    problem_number INTEGER NOT NULL,
+    elevation INTEGER NOT NULL,
+    PRIMARY KEY (fid, problem_number, elevation)
+    FOREIGN KEY (fid, problem_number) REFERENCES Problem (fid, problem_number)
+)
+
 
 --Clear the way for the Aspect table.
 DROP TABLE IF EXISTS Aspect;
+
 --Create the Aspect table
---
+CREATE TABLE Aspect (
+    fid INTEGER NOT NULL,
+    problem_number INTEGER NOT NULL,
+    aspect INTEGER NOT NULL,
+    PRIMARY KEY (fid, problem_number, elevation)
+    FOREIGN KEY (fid, problem_number) REFERENCES Problem (fid, problem_number)
+)
 
 --Clear the way for the Observation table.
 DROP TABLE IF EXISTS Observation;
