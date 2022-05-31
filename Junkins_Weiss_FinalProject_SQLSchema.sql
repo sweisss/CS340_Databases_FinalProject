@@ -65,8 +65,18 @@ CREATE TABLE Forecast (
 
 --Clear the way for the Problem table.
 DROP TABLE IF EXISTS Problem;
+
 --Create the Problem table
---
+CREATE TABLE Problem (
+	fid INTEGER,
+	problem_number TEXT NOT NULL, --TODO use id instead of two part PK?
+	problem_type TEXT NOT NULL,
+    size INTEGER NOT NULL,
+    likelihood INTEGER NOT NULL,
+    PRIMARY KEY (fid, problem_number) --TODO use id instead of two part PK?
+    FOREIGN KEY (fid) REFERENCES Forecast(fid)
+);
+
 
 --Clear the way for the Elevation table.
 DROP TABLE IF EXISTS Elevation;
