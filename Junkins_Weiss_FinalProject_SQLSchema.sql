@@ -44,6 +44,7 @@ INSERT INTO Agency VALUES (4, "Sawtooth Avalanche Center", "https://www.sawtooth
 
 
 
+-- Forecaster ----------------------------------------------------------------
 --Clear the way for the Forecaster table.
 DROP TABLE IF EXISTS Forecaster;
 
@@ -55,6 +56,17 @@ CREATE TABLE Forecaster (
     agency_id INTEGER NOT NULL,
     FOREIGN KEY (agency_id) REFERENCES Agency(agency_id)
 );
+
+--Populate the Forecaster table
+INSERT INTO Forecaster VALUES (0, "Joe", "Smith", 0);
+INSERT INTO Forecaster VALUES (1, "Jane", "Jones", 0);
+INSERT INTO Forecaster VALUES (2, "John", "Lee", 1);
+INSERT INTO Forecaster VALUES (3, "Jessica", "Thompson", 2);
+INSERT INTO Forecaster VALUES (4, "Jimmy", "Thompson", 2);
+INSERT INTO Forecaster VALUES (5, "Jane", "Jenkins", 2);
+INSERT INTO Forecaster VALUES (6, "Jorge", "Lopez", 3);
+INSERT INTO Forecaster VALUES (7, "Joe", "Watkins", 4);
+
 
 
 --Clear the way for the Forecast table.
