@@ -23,6 +23,8 @@
     --include a DROP TABLE command before each CREATE TABLE command, to facilitate quick database re-generation
 
 
+
+-- Agency ----------------------------------------------------------------
 --Clear the way for the Agency table.
 DROP TABLE IF EXISTS Agency;
 
@@ -32,6 +34,14 @@ CREATE TABLE Agency (
 	agency_name TEXT NOT NULL,
 	website_url TEXT NOT NULL
 );
+
+--Populate the Agency table
+INSERT INTO Agency VALUES (0, "Central Oregon Avalanche Center", "https://www.coavalanche.org/");
+INSERT INTO Agency VALUES (1, "Utah Avalanche Center", "https://utahavalanchecenter.org/");
+INSERT INTO Agency VALUES (2, "Sierra Avalanche Center", "https://www.sierraavalanchecenter.org/");
+INSERT INTO Agency VALUES (3, "Wallawa Avalanche Center", "https://wallowaavalanchecenter.org/");
+INSERT INTO Agency VALUES (4, "Sawtooth Avalanche Center", "https://www.sawtoothavalanche.com/");
+
 
 
 --Clear the way for the Forecaster table.
