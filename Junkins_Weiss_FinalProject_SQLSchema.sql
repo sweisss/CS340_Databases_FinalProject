@@ -106,13 +106,28 @@ CREATE TABLE Aspect (
 
 --Clear the way for the Observation table.
 DROP TABLE IF EXISTS Observation;
+
 --Create the Observation table
---
+CREATE TABLE Observation (
+    observation_id INTEGER NOT NULL PRIMARY KEY,
+    observation_date TEXT NOT NULL,
+    avalanche BOOLEAN NOT NULL,
+    obseration_location TEXT NOT NULL,
+    observer_id INTEGER NOT NULL,
+    FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
+)
+
 
 --Clear the way for the Observer table.
 DROP TABLE IF EXISTS Observer;
+
 --Create the Observer table
---
+CREATE TABLE Observer (
+    observer_id INTEGER NOT NULL PRIMARY KEY,
+    lname TEXT NOT NULL,
+    fname TEXT NOT NULL,
+    observer_type TEXT NOT NULL,
+)
 
 --Clear the way for the Zone table.
 DROP TABLE IF EXISTS Zone;
