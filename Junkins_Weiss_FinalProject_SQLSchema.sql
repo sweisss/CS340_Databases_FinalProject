@@ -176,20 +176,3 @@ CREATE TABLE Zone (
     PRIMARY KEY (zone_name, agency_id),
     FOREIGN KEY (agency_id) REFERENCES Agency(agency_id)
 );
-
-
-
--- Contribution ----------------------------------------------------------------
---Clear the way for the Contribution table.
-DROP TABLE IF EXISTS Contribution;
-
---Create the Contribution table
-CREATE TABLE Contribution (
-    agency_id INTEGER NOT NULL,
-    observation_id INTEGER NOT NULL,
-    observer_id INTEGER NOT NULL,
-    PRIMARY KEY (agency_id, observation_id, observer_id),
-    FOREIGN KEY (agency_id) REFERENCES Agency(agency_id),
-    FOREIGN KEY (observation_id) REFERENCES Observation(observation_id),
-    FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
-);
