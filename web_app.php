@@ -5,6 +5,8 @@
     <body>
         <h1>CS 340 Final Project</h1>
         <h2>Seth Weiss and Orion Junkins</h2>
+        <h2>Spring 2022</h2>
+        <!-- insert description of web page here/user instructions -->
         <?php 
             $db = new SQLite3('server.db');
             $lines = file_get_contents("Junkins_Weiss_FinalProject_SQLSchema.sql");
@@ -23,4 +25,7 @@
             
         ?> 
     </body>
+    <footer>
+        <p>© 2022 Seth Weiss and Orion Junkins</p>
+    </footer>
 </html>
