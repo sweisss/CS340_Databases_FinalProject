@@ -42,9 +42,10 @@ CREATE TABLE Agency (
 INSERT INTO Agency VALUES (0, "Central Oregon Avalanche Center", "https://www.coavalanche.org/");
 INSERT INTO Agency VALUES (1, "Utah Avalanche Center", "https://utahavalanchecenter.org/");
 INSERT INTO Agency VALUES (2, "Sierra Avalanche Center", "https://www.sierraavalanchecenter.org/");
-INSERT INTO Agency VALUES (3, "Wallawa Avalanche Center", "https://wallowaavalanchecenter.org/");
+INSERT INTO Agency VALUES (3, "Wallowa Avalanche Center", "https://wallowaavalanchecenter.org/");
 INSERT INTO Agency VALUES (4, "Sawtooth Avalanche Center", "https://www.sawtoothavalanche.com/");
-
+INSERT INTO Agency VALUES (5, "Northwest Avalanche Center", "https://nwac.us/");
+INSERT INTO Agency VALUES (6, "Colorado Avalanche Information Center", "https://www.avalanche.state.co.us/");
 
 
 -- Forecaster ----------------------------------------------------------------
@@ -252,10 +253,20 @@ CREATE TABLE Observation (
     observation_date TEXT NOT NULL,
     avalanche BOOLEAN NOT NULL,
     obseration_location TEXT NOT NULL,
-    observer_id INTEGER NOT NULL,
+    zone_id INTEGER NOT NULL,
+    observer_id INTEGER,
+    FOREIGN KEY (zone_id) REFERENCES Zone(zone_id),
     FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
 );
 
+--Populate the Observation table
+INSERT INTO Observation VALUES (0, '12-2-21', 0, "Tam McArthur Rim", 0, 0);
+INSERT INTO Observation VALUES (1, '12-15-21', 1, "Mineral Fork", 1, 1);
+INSERT INTO Observation VALUES (2, '12-26-21', 1, "Elephant's Hump", 2, 2);
+INSERT INTO Observation VALUES (3, '1-2-22', 0, "Jackson Peak", 3, 3);
+INSERT INTO Observation VALUES (4, '1-14-22', 1, "Avalanche Peak", 4, 4);
+INSERT INTO Observation VALUES (5, '2-2-22', 1, "Muir snowfield", 5, 5);
+INSERT INTO Observation VALUES (6, '2-2-22', 1, "Mt Meeker", 6, 6);
 
 
 -- Observer ----------------------------------------------------------------
