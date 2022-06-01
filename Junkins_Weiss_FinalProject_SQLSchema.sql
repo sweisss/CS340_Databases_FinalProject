@@ -281,7 +281,16 @@ CREATE TABLE Observer (
     observer_type TEXT NOT NULL
 );
 
-
+--Populate the Observer table
+INSERT INTO Observer VALUES (0, "Joe", "Smith", "Forecaster");
+INSERT INTO Observer VALUES (1, "Jane", "Jones", "Forecaster");
+INSERT INTO Observer VALUES (2, "John", "Lee", "Forecaster");
+INSERT INTO Observer VALUES (3, "Jessica", "Thompson", "Forecaster");
+INSERT INTO Observer VALUES (4, "Jimmy", "Thompson", "Forecaster");
+INSERT INTO Observer VALUES (5, "James", "Jim", "Public");
+INSERT INTO Observer VALUES (6, "Bruce", "Lee", "Public");
+INSERT INTO Observer VALUES (7, "Flake", "Snow", "Guide");
+INSERT INTO Observer VALUES (8, "Smith", "JJ", "Public");
 
 -- Zone ----------------------------------------------------------------
 --Clear the way for the Zone table.
