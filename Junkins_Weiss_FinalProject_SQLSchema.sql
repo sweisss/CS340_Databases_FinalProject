@@ -303,3 +303,11 @@ CREATE TABLE Zone (
     PRIMARY KEY (zone_name, agency_id),
     FOREIGN KEY (agency_id) REFERENCES Agency(agency_id)
 );
+
+--Populate the Zone table
+INSERT INTO Zone VALUES (0, 0);
+INSERT INTO Zone VALUES (1, 1);
+INSERT INTO Zone VALUES (2, 2);
+INSERT INTO Zone VALUES (3, 3);
+INSERT INTO Zone VALUES (4, 4);
+INSERT INTO Zone VALUES (5, 5);
