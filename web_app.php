@@ -5,23 +5,50 @@
     <body>
         <h1>CS 340 Final Project</h1>
         <h2>Seth Weiss and Orion Junkins</h2>
+<<<<<<< Updated upstream
         <h2>Spring 2022</h2>
         <!-- insert description of web page here/user instructions -->
+=======
+        <form action="web_app.php" method="post">
+            <div>
+                <label for="query">Query:</label>
+                <input type="query" id="query" name="query" />
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+>>>>>>> Stashed changes
         <?php 
             $db = new SQLite3('server.db');
             $lines = file_get_contents("Junkins_Weiss_FinalProject_SQLSchema.sql");
             $db->exec($lines);
 
-            $sql = "SELECT * FROM Agency";
-            $result = $db->query($sql);
-            if ($result->num_rows > 0) {            // output data of each row
-                while ( $row = $result->fetch_assoc()) {
-                    echo "<br>agency_id:" . $row["agency_id"] . " - " .
-                        " agency_name:" . $row["agency_name"];
-                }
+            if (isset($_POST['query'])) {
+                $sql = $_POST['query'];
             } else {
-                echo "NO RESULTS";
+                
+                echo "<br>Please input a query</br>";
             }
+
+            $res = $db->query($sql);              
+            while ($row = $res->fetchArray()) {
+                echo "<br>";
+                echo $row[0];
+                echo "    |    ";
+                echo $row[1];
+                echo "    |    ";
+                echo $row[2];
+                echo "    |    ";
+                echo $row[3];
+                // foreach ($row as $val){
+                //     echo $val;
+                //     echo " | ";
+                // }
+                echo "</br>";
+                
+            }
+
+
             
         ?> 
     </body>
