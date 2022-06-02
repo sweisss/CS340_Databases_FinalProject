@@ -19,5 +19,5 @@ php -S 127.0.0.1:8000
 #### 3) Run Web App:
 Open a browser and navigate
 ```
-http://127.0.0.1:8000/main.php
+http://127.0.0.1:8000/web_app.php
 ```

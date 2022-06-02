@@ -49,7 +49,11 @@
                 echo $row[2];
                 echo "    |    ";
                 echo $row[3];
+                // foreach ($row as $val){
+                //     echo $val;
+                // }
                 echo "</br>";
+                
             }
 
 
