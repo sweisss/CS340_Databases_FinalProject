@@ -35,6 +35,19 @@
                 // Send the loaded query to the db
                 $res = $db->query($sql);     
                 
+
+                echo "<br>";
+                echo "|    ";
+                $numColumns = $res->numColumns();
+                for ($i = 0; $i <= $numColumns; $i++) 
+                {
+                    $header = $res->columnName($i);
+                    echo $header;
+                    echo "    |    ";
+                }
+                echo "</br>";
+            
+                
                 // Iterate through all rows in the result
                 while ($row = $res->fetchArray()) {
                     echo "<br>";
