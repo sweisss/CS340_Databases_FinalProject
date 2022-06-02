@@ -6,7 +6,7 @@
 --HAVING, UNION, aggregation, and/or nested queries.
 
 -- Select all at-treeline forcasts from Jan 1, 2022. 
-SELECT danger_at_treeline FROM Forecast WHERE issue_date is "1/1/2022";
+SELECT danger_at_treeline FROM Forecast WHERE issue_date is "1/1/2022" LIMIT 5;
 
 -- Find all eastern aspect forecasts from Colorado and Utah 
 SELECT DISTINCT *
@@ -15,9 +15,10 @@ NATURAL JOIN Problem
 NATURAL JOIN Aspect
 NATURAL JOIN Forecaster
 NATURAL JOIN Agency
-WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6;
+WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6
+LIMIT 5;
 
 -- Select a complete forecast with it's associated problems
-SELECT * FROM Forecast NATURAL JOIN Problem;
+SELECT * FROM Forecast NATURAL JOIN Problem LIMIT 5;
 
 -- 
