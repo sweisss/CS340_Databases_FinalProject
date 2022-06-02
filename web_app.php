@@ -46,7 +46,7 @@
         // Conclude the table
         echo "</table>";
       }
- ?>
+?>
     <style>
     table, th, td {
     border:1px solid black;
@@ -59,6 +59,7 @@
         <h1>CS 340 Final Project</h1>
         <h2>Seth Weiss and Orion Junkins</h2>
         <h2>Spring 2022</h2>
+        <p>Enter a custom query or select a pre-canned query from below.<p>
         <!-- insert description of web page here/user instructions -->
 
         <!-- Build a text box with a submit button -->
@@ -66,7 +67,7 @@
         <!-- Entered text will be sent with the label 'query' -->
         <form action="web_app.php" method="post">
             <div>
-                <label for="query">Query:</label>
+                <label for="query">Custom Query:</label>
                 <input type="query" id="query" name="query" />
             </div>
             <button type="submit">Submit</button>
@@ -90,6 +91,7 @@
                 echo "<br>Please input a query</br>";
             }            
         ?> 
+        <h2>Precanned Queries</h2>
         <form method="post">
             <h4>Canned Query 1: SELECT * FROM Forecast NATURAL JOIN Problem</h4>
             <input type='submit' name="canned_query_1" value="Submit Query 1"><br>
