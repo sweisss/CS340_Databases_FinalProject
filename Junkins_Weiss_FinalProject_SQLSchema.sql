@@ -85,9 +85,9 @@ CREATE TABLE Forecast (
     danger_at_treeline INTEGER NOT NULL,
     danger_above_treeline INTEGER NOT NULL,
     issued_by INTEGER NOT NULL,
-    corresponds_to INTEGER NOT NULL,
+    corresponds_to TEXT NOT NULL,
     FOREIGN KEY (issued_by) REFERENCES Forecaster(frcstr_id),
-    FOREIGN KEY (corresponds_to) REFERENCES Zone(zone_id)
+    FOREIGN KEY (corresponds_to) REFERENCES Zone(zone_name)
 );
 
 --Populate the Forecast table
@@ -253,20 +253,21 @@ CREATE TABLE Observation (
     observation_date TEXT NOT NULL,
     avalanche BOOLEAN NOT NULL,
     obseration_location TEXT NOT NULL,
-    zone_id INTEGER NOT NULL,
+    zone_name TEXT NOT NULL,
     observer_id INTEGER,
-    FOREIGN KEY (zone_id) REFERENCES Zone(zone_id),
+    obs_description TEXT, 
+    FOREIGN KEY (zone_name) REFERENCES Zone(zone_name),
     FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
 );
 
 --Populate the Observation table
-INSERT INTO Observation VALUES (0, '12-2-21', 0, "Tam McArthur Rim", 0, 0);
-INSERT INTO Observation VALUES (1, '12-15-21', 1, "Mineral Fork", 1, 1);
-INSERT INTO Observation VALUES (2, '12-26-21', 1, "Elephant's Hump", 2, 2);
-INSERT INTO Observation VALUES (3, '1-2-22', 0, "Jackson Peak", 3, 3);
-INSERT INTO Observation VALUES (4, '1-14-22', 1, "Avalanche Peak", 4, 4);
-INSERT INTO Observation VALUES (5, '2-2-22', 1, "Muir snowfield", 5, 5);
-INSERT INTO Observation VALUES (6, '2-2-22', 1, "Mt Meeker", 6, 6);
+INSERT INTO Observation VALUES (0, '12-2-21', 0, "Tam McArthur Rim", "Central Cascades", 0, "Dug a hand pit, good bonding.");
+INSERT INTO Observation VALUES (1, '12-15-21', 1, "Mineral Fork", "Cottonwood Canyon", 1, "Saw remenants of slide. No cracking or wumphing.");
+INSERT INTO Observation VALUES (2, '12-26-21', 1, "Elephant's Hump", "Central Sierra Nevada", 2, "Huge slide off the hump, most likely human triggered.");
+INSERT INTO Observation VALUES (3, '1-2-22', 0, "Jackson Peak", "Northern Wallowas", 3, "Great snow, no cracks or wumphing, pit revealed potential persistent weak layer.");
+INSERT INTO Observation VALUES (4, '1-14-22', 1, "Avalanche Peak", "Sawtooth and Western Smoky Mtns", 4, "Observered an avalanche on Avalanceh Peak!");
+INSERT INTO Observation VALUES (5, '2-2-22', 1, "Muir snowfield", "West Slopes South", 5, "Skier triggered small loose-wet slide. Large roller-balls.");
+INSERT INTO Observation VALUES (6, '2-2-22', 1, "Mt Meeker", "Southern Mountains", 6, "Large scary cracks. Many avalanches in steeper terrain.");
 
 
 -- Observer ----------------------------------------------------------------
@@ -300,7 +301,7 @@ DROP TABLE IF EXISTS Zone;
 CREATE TABLE Zone (
     zone_name TEXT NOT NULL,
     agency_id INTEGER NOT NULL,
-    PRIMARY KEY (zone_name, agency_id),
+    PRIMARY KEY (zone_name),
     FOREIGN KEY (agency_id) REFERENCES Agency(agency_id)
 );
 
