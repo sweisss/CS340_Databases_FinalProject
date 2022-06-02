@@ -127,7 +127,7 @@ CREATE TABLE Problem (
     FOREIGN KEY (fid) REFERENCES Forecast(fid)
 );
 
---Populate the Forecast table
+--Populate the Problem table
 INSERT INTO Problem VALUES (0, 0, 'Loose Dry', 1, 1);
 INSERT INTO Problem VALUES (1, 0, 'Wind Slab', 2, 1);
 INSERT INTO Problem VALUES (2, 1, 'Storm Slab', 3, 4);
