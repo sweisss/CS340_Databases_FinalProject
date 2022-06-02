@@ -1,4 +1,9 @@
 <html>
+    <style>
+    table, th, td {
+    border:1px solid black;
+    }
+    </style>
     <head>
         <title>CS340 Final</title>
     </head>
@@ -35,29 +40,35 @@
                 // Send the loaded query to the db
                 $res = $db->query($sql);     
                 
-
-                echo "<br>";
-                echo "|    ";
+                // Start building the result table
+                echo "<table style=\"width:100%\">";
+                
+                // Build the Header
+                echo "<tr>";
                 $numColumns = $res->numColumns();
-                for ($i = 0; $i <= $numColumns; $i++) 
+                for ($i = 0; $i < $numColumns; $i++) 
                 {
+                    echo "<td>";
                     $header = $res->columnName($i);
                     echo $header;
-                    echo "    |    ";
+                    echo "</td>";
                 }
-                echo "</br>";
-            
-                
-                // Iterate through all rows in the result
+                echo "</tr>";
+
+                // Iterate through all rows in the result to build each table row
                 while ($row = $res->fetchArray()) {
-                    echo "<br>";
-                    echo "|    ";
-                    foreach ($row as $item){
-                        echo $item;
-                        echo "    |    ";
+                    echo "<tr>";
+
+                    for ($i = 0; $i < $numColumns; $i++) {
+                        echo "<td>";
+                        echo $row[$i];
+                        echo "</td>";
                     }
-                    echo "</br>";
+                    echo "</tr>";
                 }
+
+                // Conclude the table
+                echo "</table>";
             } else {
                 echo "<br>Please input a query</br>";
             }            
