@@ -123,7 +123,7 @@ CREATE TABLE Problem (
 	problem_type TEXT NOT NULL,
     size INTEGER,
     likelihood INTEGER,
-    PRIMARY KEY (fid),
+    PRIMARY KEY (pid),
     FOREIGN KEY (fid) REFERENCES Forecast(fid)
 );
 
