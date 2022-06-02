@@ -1,0 +1,1 @@
+SELECT danger_at_treeline FROM Forecast WHERE issue_date is "1/1/2022";
