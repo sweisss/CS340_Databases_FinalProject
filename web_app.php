@@ -32,32 +32,22 @@
             // Grab the 'query' value from the POST reqeust if it exists
             if (isset($_POST['query'])) {
                 $sql = $_POST['query'];
+                // Send the loaded query to the db
+                $res = $db->query($sql);     
+                
+                // Iterate through all rows in the result
+                while ($row = $res->fetchArray()) {
+                    echo "<br>";
+                    echo "|    ";
+                    foreach ($row as $item){
+                        echo $item;
+                        echo "    |    ";
+                    }
+                    echo "</br>";
+                }
             } else {
                 echo "<br>Please input a query</br>";
-            }
-            
-            // Send the loaded query to the db
-            $res = $db->query($sql);     
-            
-            // Iterate through all rows in the result
-            while ($row = $res->fetchArray()) {
-                echo "<br>";
-                echo $row[0];
-                echo "    |    ";
-                echo $row[1];
-                echo "    |    ";
-                echo $row[2];
-                echo "    |    ";
-                echo $row[3];
-                // foreach ($row as $val){
-                //     echo $val;
-                // }
-                echo "</br>";
-                
-            }
-
-
-            
+            }            
         ?> 
     </body>
     <footer>
