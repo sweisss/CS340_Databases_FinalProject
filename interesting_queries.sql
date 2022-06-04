@@ -5,7 +5,7 @@
 --and use one or more concepts such as WHERE filtering, GROUP BY, ORDER BY,
 --HAVING, UNION, aggregation, and/or nested queries.
 
--- 1) Find the most common avalnche problem in Utah (it should be Wind Slab with a count of 2)
+-- 1) Find the most common avalanche problem in Utah (it should be Wind Slab with a count of 2)
 -- SELECT a.agency_name, p.problem_type, MAX(prob_count) --COUNT(p.problem_type)
 -- FROM (SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) AS prob_count
 --     FROM Problem AS p
