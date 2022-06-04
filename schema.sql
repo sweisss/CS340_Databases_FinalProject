@@ -255,7 +255,7 @@ CREATE TABLE Observation (
     observation_id INTEGER NOT NULL PRIMARY KEY,
     observation_date TEXT NOT NULL,
     avalanche BOOLEAN NOT NULL,
-    obseration_location TEXT NOT NULL,
+    observation_location TEXT NOT NULL,
     zone_name TEXT NOT NULL,
     observer_id INTEGER,
     obs_description TEXT, 
@@ -309,9 +309,10 @@ CREATE TABLE Zone (
 );
 
 --Populate the Zone table
-INSERT INTO Zone VALUES (0, 0);
-INSERT INTO Zone VALUES (1, 1);
-INSERT INTO Zone VALUES (2, 2);
-INSERT INTO Zone VALUES (3, 3);
-INSERT INTO Zone VALUES (4, 4);
-INSERT INTO Zone VALUES (5, 5);
+INSERT INTO Zone VALUES ('Central Cascades', 0);
+INSERT INTO Zone VALUES ("Cottonwood Canyon", 1);
+INSERT INTO Zone VALUES ("Central Sierra Nevada", 2);
+INSERT INTO Zone VALUES ("Northern Wallowas", 3);
+INSERT INTO Zone VALUES ("Sawtooth and Western Smoky Mtns", 4);
+INSERT INTO Zone VALUES ("West Slopes South", 5);
+INSERT INTO Zone VALUES ("Southern Mountains", 6);

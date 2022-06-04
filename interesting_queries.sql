@@ -24,10 +24,11 @@ LIMIT 5;
 SELECT * FROM Forecast NATURAL JOIN Problem LIMIT 5;
 
 -- 4) Find all observation data from Oregon
-SELECT * FROM Observation
-NATURAL JOIN Zone
-NATURAL JOIN Agency
-WHERE agency_id=0 OR agency_id=1;
+SELECT DISTINCT o.observation_date, z.zone_name, o.observation_location, o.avalanche, o.obs_description FROM Observation AS o
+JOIN Zone AS z
+JOIN Agency AS a
+WHERE a.agency_id=0 OR a.agency_id=3
+LIMIT 5;
 --WHERE agency_id IN (0, 3);
 
 -- 5) Find the first and last name of forecasters who have not contributed an observation
