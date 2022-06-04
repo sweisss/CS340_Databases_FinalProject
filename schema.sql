@@ -94,8 +94,8 @@ CREATE TABLE Forecast (
 );
 
 --Populate the Forecast table
-INSERT INTO Forecast VALUES (0, "1/1/2022", 0, 1, 1, 0, "Central Cascades");
-INSERT INTO Forecast VALUES (1, "1/1/2022", 1, 1, 1, 1, "Cottonwood Canyon");
+INSERT INTO Forecast VALUES (0, "12-2-21", 0, 1, 1, 0, "Central Cascades");
+INSERT INTO Forecast VALUES (1, "12-26-21", 1, 1, 1, 1, "Cottonwood Canyon");
 INSERT INTO Forecast VALUES (2, "1/1/2022", 2, 2, 3, 1, "Central Sierra Nevada");
 INSERT INTO Forecast VALUES (3, "1/1/2022", 2, 2, 2, 4, "Northern Wallowas");
 INSERT INTO Forecast VALUES (4, "1/1/2022", 1, 2, 3, 4, "Sawtooth and Western Smoky Mtns");

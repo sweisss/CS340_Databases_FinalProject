@@ -10,6 +10,8 @@ bash build_db.sh
 ```
 
 This will delete any existing file named `test.db` and rebuild a new one.
+If for some reason `test.db` is not removed, manually remove it then call the command again to create a new one. 
+Follow with the command `sqlite3 test.db`.
 
 #### 2) Run PHP Server:
 ```

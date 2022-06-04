@@ -5,11 +5,11 @@
 --and use one or more concepts such as WHERE filtering, GROUP BY, ORDER BY,
 --HAVING, UNION, aggregation, and/or nested queries.
 
--- Select all at-treeline forcasts from Jan 1, 2022.
+-- 1) Select all at-treeline forcasts from Jan 1, 2022.
 -- !!!THIS MIGHT BE TOO SIMPLE!!!
 SELECT danger_at_treeline FROM Forecast WHERE issue_date is "1/1/2022" LIMIT 5;
 
--- Find all eastern aspect forecasts from Colorado and Utah 
+-- 2) Find all eastern aspect forecasts from Colorado and Utah 
 SELECT DISTINCT *
 FROM Forecast
 NATURAL JOIN Problem
@@ -19,13 +19,16 @@ NATURAL JOIN Agency
 WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6
 LIMIT 5;
 
--- Select a complete forecast with it's associated problems 
+-- 3) Select a complete forecast with it's associated problems 
 -- !!!THIS MIGHT BE TOO SIMPLE (maybe put and order by or group by in it)
 SELECT * FROM Forecast NATURAL JOIN Problem LIMIT 5;
 
--- Find the first and last names from forecasters who contributed observations listed alphabetically by last name. 
---!!!THIS MIGHT BE TOO SIMPLE!!!
-SELECT fname, lname FROM Observer WHERE observer_type="Forecaster" ORDER BY lname LIMIT 5; 
+-- 4) Find all observation data from Oregon
+SELECT * FROM Observation
+NATURAL JOIN Zone
+NATURAL JOIN Agency
+WHERE agency_id=0 OR agency_id=1;
+--WHERE agency_id IN (0, 3);
 
--- Find the first and last name of forecasters who have not contributed an observation
+-- 5) Find the first and last name of forecasters who have not contributed an observation
 SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL;
