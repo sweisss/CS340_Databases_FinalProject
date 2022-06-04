@@ -19,9 +19,13 @@ NATURAL JOIN Agency
 WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6
 LIMIT 5;
 
--- 3) Select a complete forecast with it's associated problems 
--- !!!THIS MIGHT BE TOO SIMPLE (maybe put and order by or group by in it)
-SELECT * FROM Forecast NATURAL JOIN Problem LIMIT 5;
+-- 3) Find all forecasts that involve a Wind Slab problem, order first by region then by issue date.  
+SELECT * 
+FROM Forecast 
+NATURAL JOIN Problem 
+WHERE problem.problem_type = "Wind Slab"
+ORDER BY corresponds_to, issue_date
+LIMIT 5;
 
 -- 4) Find all observation data from Oregon
 SELECT DISTINCT 
@@ -35,7 +39,6 @@ NATURAL JOIN Zone AS z
 NATURAL JOIN Agency AS a 
 WHERE agency_id IN (0, 3)
 LIMIT 5;
-
 
 -- 5) Find the first and last name of forecasters who have not contributed an observation
 SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL;
