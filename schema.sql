@@ -95,22 +95,20 @@ CREATE TABLE Forecast (
 
 --Populate the Forecast table
 INSERT INTO Forecast VALUES (0, "12-2-21", 0, 1, 1, 0, "Central Cascades");
-INSERT INTO Forecast VALUES (1, "12-26-21", 1, 1, 1, 1, "Cottonwood Canyon");
-INSERT INTO Forecast VALUES (2, "1/1/2022", 2, 2, 3, 1, "Central Sierra Nevada");
-INSERT INTO Forecast VALUES (3, "1/1/2022", 2, 2, 2, 4, "Northern Wallowas");
-INSERT INTO Forecast VALUES (4, "1/1/2022", 1, 2, 3, 4, "Sawtooth and Western Smoky Mtns");
-
-INSERT INTO Forecast VALUES (5, "1/2/2022", 1, 1, 1, 0, "Central Cascades");
-INSERT INTO Forecast VALUES (6, "1/2/2022", 2, 2, 2, 1, "Cottonwood Canyon");
-INSERT INTO Forecast VALUES (7, "1/2/2022", 2, 2, 3, 1, "Central Sierra Nevada");
-INSERT INTO Forecast VALUES (8, "1/2/2022", 3, 4, 4, 4, "Northern Wallowas");
-INSERT INTO Forecast VALUES (9, "1/2/2022", 2, 2, 2, 4, "Sawtooth and Western Smoky Mtns");
-
-INSERT INTO Forecast VALUES (10, "1/3/2022", 1, 1, 1, 0, "Central Cascades");
-INSERT INTO Forecast VALUES (11, "1/3/2022", 0, 1, 1, 1, "Cottonwood Canyon");
-INSERT INTO Forecast VALUES (12, "1/3/2022", 0, 1, 1, 1, "Central Sierra Nevada");
-INSERT INTO Forecast VALUES (13, "1/3/2022", 2, 2, 3, 4, "Northern Wallowas");
-INSERT INTO Forecast VALUES (14, "1/3/2022", 1, 1, 1, 4, "Sawtooth and Western Smoky Mtns");
+INSERT INTO Forecast VALUES (1, "12-26-21", 1, 1, 1, 1, "Southern Mountains");
+INSERT INTO Forecast VALUES (2, "1/1/2022", 2, 2, 3, 2, "Uintas");
+INSERT INTO Forecast VALUES (3, "1/1/2022", 2, 2, 2, 3, "Central Sierra Nevada");
+INSERT INTO Forecast VALUES (4, "1/1/2022", 1, 2, 3, 4, "Central Sierra Nevada");
+INSERT INTO Forecast VALUES (5, "1/2/2022", 1, 1, 1, 5, "West Slopes South");
+INSERT INTO Forecast VALUES (6, "1/2/2022", 2, 2, 2, 6, "Northern Wallowas");
+INSERT INTO Forecast VALUES (7, "1/2/2022", 2, 2, 3, 7, "Sawtooth and Western Smoky Mtns");
+INSERT INTO Forecast VALUES (8, "1/2/2022", 3, 4, 4, 8, "Southern Mountains");
+INSERT INTO Forecast VALUES (9, "1/2/2022", 2, 2, 2, 9, "West Slopes South");
+INSERT INTO Forecast VALUES (10, "1/3/2022", 1, 1, 1, 10, "Sawtooth and Western Smoky Mtns");
+INSERT INTO Forecast VALUES (11, "1/3/2022", 0, 1, 1, 1, "Southern Mountains");
+INSERT INTO Forecast VALUES (12, "1/3/2022", 0, 1, 1, 2, "Uintas");
+INSERT INTO Forecast VALUES (13, "1/3/2022", 2, 2, 3, 3, "Central Sierra Nevada");
+INSERT INTO Forecast VALUES (14, "1/3/2022", 1, 1, 1, 4, "Central Sierra Nevada");
 
 
 
@@ -265,7 +263,7 @@ CREATE TABLE Observation (
 
 --Populate the Observation table
 INSERT INTO Observation VALUES (0, '12-2-21', 0, "Tam McArthur Rim", "Central Cascades", 0, "Dug a hand pit, good bonding.");
-INSERT INTO Observation VALUES (1, '12-15-21', 1, "Mineral Fork", "Cottonwood Canyon", 1, "Saw remenants of slide. No cracking or wumphing.");
+INSERT INTO Observation VALUES (1, '12-15-21', 1, "Mineral Fork", "Uintas", 1, "Saw remenants of slide. No cracking or wumphing.");
 INSERT INTO Observation VALUES (2, '12-26-21', 1, "Elephant's Hump", "Central Sierra Nevada", 2, "Huge slide off the hump, most likely human triggered.");
 INSERT INTO Observation VALUES (3, '1-2-22', 0, "Jackson Peak", "Northern Wallowas", 3, "Great snow, no cracks or wumphing, pit revealed potential persistent weak layer.");
 INSERT INTO Observation VALUES (4, '1-14-22', 1, "Avalanche Peak", "Sawtooth and Western Smoky Mtns", 4, "Observered an avalanche on Avalanceh Peak!");
@@ -310,7 +308,7 @@ CREATE TABLE Zone (
 
 --Populate the Zone table
 INSERT INTO Zone VALUES ('Central Cascades', 0);
-INSERT INTO Zone VALUES ("Cottonwood Canyon", 1);
+INSERT INTO Zone VALUES ("Uintas", 1);
 INSERT INTO Zone VALUES ("Central Sierra Nevada", 2);
 INSERT INTO Zone VALUES ("Northern Wallowas", 3);
 INSERT INTO Zone VALUES ("Sawtooth and Western Smoky Mtns", 4);
