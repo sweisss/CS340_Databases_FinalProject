@@ -277,8 +277,8 @@ DROP TABLE IF EXISTS Observer;
 --Create the Observer table
 CREATE TABLE Observer (
     observer_id INTEGER NOT NULL PRIMARY KEY,
-    lname TEXT NOT NULL,
     fname TEXT NOT NULL,
+    lname TEXT NOT NULL,
     observer_type TEXT NOT NULL
 );
 
