@@ -5,17 +5,42 @@
 --and use one or more concepts such as WHERE filtering, GROUP BY, ORDER BY,
 --HAVING, UNION, aggregation, and/or nested queries.
 
--- 1) Find the agency with the most Wind Slab problems in the forecasts.
--- SELECT COUNT(problem_type) FROM Problem WHERE problem_type="Wind Slab"; -- gets the total amount of Wind Slab Problems
+-- 1) Find the most common avalnche problem in Utah (it should be Wind Slab with a count of 2)
+-- SELECT a.agency_name, p.problem_type, MAX(prob_count) --COUNT(p.problem_type)
+-- FROM (SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) AS prob_count
+--     FROM Problem AS p
+--     NATURAL JOIN Forecast AS f
+--     NATURAL JOIN Forecaster AS fr 
+--     NATURAL JOIN Agency AS a 
+--     --WHERE a.agency_id=1
+--     ORDER BY COUNT(p.problem_type) DESC LIMIT 1)
+-- GROUP BY a.agency_id;
 
-SELECT a.agency_name, a.website_url, p.problem_type, COUNT(p.problem_type) AS prob
-FROM Agency AS a
-NATURAL JOIN Forecaster
-NATURAL JOIN Forecast
-NATURAL JOIN Problem AS p
-WHERE p.problem_type="Wind Slab"
-GROUP BY a.agency_name
-ORDER BY prob DESC LIMIT 1;
+-- SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
+-- FROM Problem AS p
+-- NATURAL JOIN Forecast AS f
+-- NATURAL JOIN Forecaster AS fr 
+-- NATURAL JOIN Agency AS a 
+-- WHERE a.agency_id=1
+-- GROUP BY a.agency_name, p.problem_type 
+-- ORDER BY a.agency_name,COUNT(p.problem_type) DESC LIMIT 5;
+
+-- This almost works, the count is still counting the overall total though. 
+SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) 
+FROM Problem AS p  
+NATURAL JOIN Forecast AS f
+NATURAL JOIN Forecaster AS fr 
+NATURAL JOIN Agency AS a 
+WHERE a.agency_id=1
+GROUP BY p.problem_type 
+HAVING COUNT (p.problem_type)=( 
+SELECT MAX(mycount) 
+FROM ( 
+SELECT p.problem_type, COUNT(p.problem_type) mycount 
+FROM Problem AS p 
+GROUP BY p.problem_type));
+
+
 
 
 -- 2) Find all eastern aspect forecasts from Colorado and Utah 
