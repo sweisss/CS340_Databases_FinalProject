@@ -290,8 +290,8 @@ INSERT INTO Observer VALUES (3, "Jessica", "Thompson", "Forecaster");
 INSERT INTO Observer VALUES (4, "Jimmy", "Thompson", "Forecaster");
 INSERT INTO Observer VALUES (5, "James", "Jim", "Public");
 INSERT INTO Observer VALUES (6, "Bruce", "Lee", "Public");
-INSERT INTO Observer VALUES (7, "Flake", "Snow", "Guide");
-INSERT INTO Observer VALUES (8, "Smith", "JJ", "Public");
+INSERT INTO Observer VALUES (7, "Snow", "Flake", "Guide");
+INSERT INTO Observer VALUES (8, "Smith", "Optics", "Public");
 
 -- Zone ----------------------------------------------------------------
 --Clear the way for the Zone table.
