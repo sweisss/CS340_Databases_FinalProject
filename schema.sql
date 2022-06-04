@@ -70,9 +70,9 @@ INSERT INTO Forecaster VALUES (4, "Jimmy", "Thompson", 2);
 INSERT INTO Forecaster VALUES (5, "Jane", "Jenkins", 5);
 INSERT INTO Forecaster VALUES (6, "Jorge", "Lopez", 3);
 INSERT INTO Forecaster VALUES (7, "Joe", "Watkins", 4);
-INSERT INTO Forecaster VALUES (7, "Joey JoJo Jr.", "Shabadoo", 6);
-INSERT INTO Forecaster VALUES (7, "Big", "Foot", 5);
-INSERT INTO Forecaster VALUES (7, "Healy", "Fettuccine", 4);
+INSERT INTO Forecaster VALUES (8, "Joey JoJo Jr.", "Shabadoo", 6);
+INSERT INTO Forecaster VALUES (9, "Big", "Foot", 5);
+INSERT INTO Forecaster VALUES (10, "Healy", "Fettuccine", 4);
 
 
 

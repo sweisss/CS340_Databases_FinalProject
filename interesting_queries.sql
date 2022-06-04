@@ -27,6 +27,5 @@ SELECT * FROM Forecast NATURAL JOIN Problem LIMIT 5;
 --!!!THIS MIGHT BE TOO SIMPLE!!!
 SELECT fname, lname FROM Observer WHERE observer_type="Forecaster" ORDER BY lname LIMIT 5; 
 
---Find the first and last name of forecasters who have not contributed an observation
---This doesn't work yet
-SELECT fname, lname FROM Forecaster NATURAL JOIN Observer WHERE observer_type iS NULL;
+-- Find the first and last name of forecasters who have not contributed an observation
+SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL;
