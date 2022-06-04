@@ -24,4 +24,4 @@ SELECT * FROM Forecast NATURAL JOIN Problem LIMIT 5;
 -- Find the first and last names from forecasters who contributed observations listed alphabetically by last name.
 SELECT fname, lname FROM Observer WHERE observer_type="Forecaster" ORDER BY lname LIMIT 5; 
 
---Select something else interesting
+--Find all forecasters who have not contributed an observation
