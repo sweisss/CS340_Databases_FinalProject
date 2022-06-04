@@ -21,4 +21,4 @@ LIMIT 5;
 -- Select a complete forecast with it's associated problems
 SELECT * FROM Forecast NATURAL JOIN Problem LIMIT 5;
 
--- 
+-- Select
