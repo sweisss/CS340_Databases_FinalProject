@@ -88,12 +88,12 @@
                 
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_2'])) {
-                $sql = "SELECT DISTINCT p.pid ,fr.issue_date, ag.agency_name, fr.corresponds_to as Zone, p.problem_type, p.size, p.likelihood, a.aspect, e.elevation FROM Forecast as fr JOIN Problem as p ON fr.fid = p.fid JOIN Aspect as a  ON p.pid = a.pid JOIN Elevation as e  ON p.pid = e.pid JOIN Forecaster as f ON fr.issued_by = f.frcstr_id JOIN Agency as ag ON ag.agency_id = f.agency_id WHERE a.aspect = "E" AND ag.agency_id=6 LIMIT 5;";                 
+                $sql = "SELECT DISTINCT p.pid ,fr.issue_date, ag.agency_name, fr.corresponds_to as Zone, p.problem_type, p.size, p.likelihood, a.aspect, e.elevation FROM Forecast as fr JOIN Problem as p ON fr.fid = p.fid JOIN Aspect as a  ON p.pid = a.pid JOIN Elevation as e  ON p.pid = e.pid JOIN Forecaster as f ON fr.issued_by = f.frcstr_id JOIN Agency as ag ON ag.agency_id = f.agency_id WHERE a.aspect = \"E\" AND ag.agency_id=6 LIMIT 5;";                 
                 
                 
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_3'])) {
-                $sql = "SELECT fid, issue_date, danger_below_treeline, danger_at_treeline, danger_above_treeline, issued_by as Agency, corresponds_to AS Zone, pid, problem_type, size, likelihood FROM Forecast  NATURAL JOIN Problem  WHERE problem.problem_type = "Wind Slab" ORDER BY corresponds_to, issue_date LIMIT 5;";
+                $sql = "SELECT fid, issue_date, danger_below_treeline, danger_at_treeline, danger_above_treeline, issued_by as Agency, corresponds_to AS Zone, pid, problem_type, size, likelihood FROM Forecast  NATURAL JOIN Problem  WHERE problem.problem_type = \"Wind Slab\" ORDER BY corresponds_to, issue_date LIMIT 5;";
                 
                 
                 build_table($sql, $db);
@@ -103,7 +103,7 @@
                 
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_5'])) {
-                $sql = "SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL; ";
+                $sql = "SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname IS NULL; ";
     
 
                 build_table($sql, $db);
@@ -155,7 +155,7 @@
         <form method="post">
             <h4>Canned Query 5: Find the first and last name of forecasters who have not contributed an observation.</h4>
             
-            <p>SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL; <br></p>
+            <p>SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname IS NULL; <br></p>
             <input type='submit' name="canned_query_5" value="Submit Query 5"><br>
         </form>
 

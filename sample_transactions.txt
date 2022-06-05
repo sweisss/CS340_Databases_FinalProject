@@ -184,7 +184,7 @@ LIMIT 5;
 
 
 5) Find the first and last name of forecasters who have not contributed an observation
-SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL;
+SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname IS NULL;
 ┌───────────────┬────────────┐
 │     fname     │   lname    │
 ├───────────────┼────────────┤
