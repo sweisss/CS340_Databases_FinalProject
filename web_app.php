@@ -99,16 +99,9 @@
          <!-- List several buttons/descriptions for precanned queries-->
         <h2>Precanned Queries</h2>
         <form method="post">
-            <h4>Canned Query 1: SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
-FROM Forecast as fr
-INNER JOIN Problem as p
-ON fr.fid = p.fid
-INNER JOIN Agency as a
-ON fr.issued_by = a.agency_id
-WHERE issued_by=1
-GROUP BY p.problem_type
-ORDER BY COUNT (p.problem_type) DESC
-LIMIT 1; </h4>
+            <h4>Canned Query 1: Most common avalanche problem type for Utah</h4>
+            <p> Identify the single most common type of problem from all forecasts issued by forecasters who work for the Utah Avalanche Center (agency_id=1). Return the agency name, the problem type, and the total count identified.</p> 
+            <p>SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) <br>FROM Forecast as fr <br>INNER JOIN Problem as p <br>ON fr.fid = p.fid <br>INNER JOIN Agency as a <br>ON fr.issued_by = a.agency_id <br>WHERE issued_by=1 <br>GROUP BY p.problem_type <br>ORDER BY COUNT (p.problem_type) DESC <br>LIMIT 1; </p>
             <input type='submit' name="canned_query_1" value="Submit Query 1"><br>
         </form>
         <form method="post">
