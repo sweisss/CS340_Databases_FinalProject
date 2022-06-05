@@ -89,7 +89,13 @@
                 $sql = "SELECT DISTINCT * FROM Forecast NATURAL JOIN Problem NATURAL JOIN Aspect NATURAL JOIN Forecaster NATURAL JOIN Agency WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6 LIMIT 5;";
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_3'])) {
-                $sql = "SELECT danger_at_treeline FROM Forecast";
+                $sql = "SELECT * FROM Forecast NATURAL JOIN Problem WHERE problem.problem_type = "Wind Slab" ORDER BY corresponds_to, issue_date LIMIT 5;";
+                build_table($sql, $db);
+            } else if (isset($_POST['canned_query_4'])) {
+                $sql = "SELECT DISTINCT o.observation_date, z.zone_name, o.observation_location, CASE WHEN avalanche = 0 THEN 'No' ELSE 'Yes' END AS avalanche, o.obs_description FROM Observation AS o NATURAL JOIN Zone AS z NATURAL JOIN Agency AS a WHERE agency_id IN (0, 3) LIMIT 5;";
+                build_table($sql, $db);
+            } else if (isset($_POST['canned_query_5'])) {
+                $sql = "SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL;";
                 build_table($sql, $db);
             } else {
                 echo "<br>Please input a query</br>";
@@ -109,20 +115,34 @@
         
         <!-- Query 2 -->
         <form method="post">
-            <h4>Canned Query 2: Find all eastern aspect forecasts from Colorado and Utah </h4>
-            <p> Find all forecasts from Colorado (agency_id=6) and Utah (agency_id = 1) where some problem exists on an eastern aspect.</p> 
+            <h4>Canned Query 2:Find all forecasts from Colorado (agency_id=6) and Utah (agency_id = 1) where some problem exists on an eastern aspect. </h4>
             <p>SELECT DISTINCT * <br> FROM Forecast <br> NATURAL JOIN Problem <br> NATURAL JOIN Aspect <br> NATURAL JOIN Forecaster <br> NATURAL JOIN Agency <br> WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6 <br> LIMIT 5; </p>
             <input type='submit' name="canned_query_2" value="Submit Query 2"><br>
         </form>
         
+
+        <!-- Query 3 -->
         <form method="post">
-            <h4>Canned Query 2: SELECT agency_id FROM Agency</h4>
-            <input type='submit' name="canned_query_2" value="Submit Query 2"><br>
+            <h4>Canned Query 3: Find all forecasts that involve a Wind Slab problem. Order first by region then by issue date.  </h4>
+            <p>SELECT * <br>FROM Forecast <br>NATURAL JOIN Problem <br>WHERE problem.problem_type = "Wind Slab"<br>ORDER BY corresponds_to, issue_date<br>LIMIT 5;</p>
+            <input type='submit' name="canned_query_3" value="Submit Query 3"><br>
         </form>
+
+        <!-- Query 4 -->
         <form method="post">
-            <h4>Canned Query 3: SELECT danger_at_treeline FROM Forecast</h4>
-            <input type='submit' name="canned_query_3" value="Submit Query 2"><br>
+            <h4>Canned Query 4: Find all observation data from Oregon.</h4>
+            <p>SELECT DISTINCT <br>    o.observation_date, <br>    z.zone_name, <br>    o.observation_location,<br>    CASE WHEN avalanche = 0 THEN 'No' ELSE 'Yes' END AS avalanche, <br>    o.obs_description <br>FROM Observation AS o<br>NATURAL JOIN Zone AS z<br>NATURAL JOIN Agency AS a <br>WHERE agency_id IN (0, 3)<br>LIMIT 5;</p>
+            <input type='submit' name="canned_query_4" value="Submit Query 4"><br>
         </form>
+
+        <!-- Query 5 -->
+        <form method="post">
+            <h4>Canned Query 5: Find the first and last name of forecasters who have not contributed an observation.</h4>
+            <p>SELECT f.fname, f.lname <br>FROM Forecaster AS f <br>LEFT JOIN Observer AS o <br>ON f.fname = o.fname <br>WHERE o.fname iS NULL;</p>
+            <input type='submit' name="canned_query_5" value="Submit Query 5"><br>
+        </form>
+
+
     </body>
     <footer>
         <p>© 2022 Seth Weiss and Orion Junkins</p>
