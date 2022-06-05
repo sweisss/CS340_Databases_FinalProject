@@ -83,7 +83,7 @@
                 $sql = $_POST['query'];
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_1'])) {
-                $sql = "SELECT * FROM Forecast NATURAL JOIN Problem";
+                $sql = "SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) FROM Forecast as fr INNER JOIN Problem as p ON fr.fid = p.fid INNER JOIN Agency as a ON fr.issued_by = a.agency_id WHERE issued_by=1 GROUP BY p.problem_type ORDER BY COUNT (p.problem_type) DESC LIMIT 1; ";
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_2'])) {
                 $sql = "SELECT agency_id FROM Agency";
@@ -99,7 +99,16 @@
          <!-- List several buttons/descriptions for precanned queries-->
         <h2>Precanned Queries</h2>
         <form method="post">
-            <h4>Canned Query 1: SELECT * FROM Forecast NATURAL JOIN Problem</h4>
+            <h4>Canned Query 1: SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
+FROM Forecast as fr
+INNER JOIN Problem as p
+ON fr.fid = p.fid
+INNER JOIN Agency as a
+ON fr.issued_by = a.agency_id
+WHERE issued_by=1
+GROUP BY p.problem_type
+ORDER BY COUNT (p.problem_type) DESC
+LIMIT 1; </h4>
             <input type='submit' name="canned_query_1" value="Submit Query 1"><br>
         </form>
         <form method="post">
