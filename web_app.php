@@ -83,10 +83,10 @@
                 $sql = $_POST['query'];
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_1'])) {
-                $sql = "SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) FROM Forecast as fr INNER JOIN Problem as p ON fr.fid = p.fid INNER JOIN Agency as a ON fr.issued_by = a.agency_id WHERE issued_by=1 GROUP BY p.problem_type ORDER BY COUNT (p.problem_type) DESC LIMIT 1; ";
+                $sql = "SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) FROM Forecast as fr INNER JOIN Problem as p ON fr.fid = p.fid INNER JOIN Agency as a ON fr.issued_by = a.agency_id WHERE issued_by=1 GROUP BY p.problem_type ORDER BY COUNT (p.problem_type) DESC LIMIT 1;";
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_2'])) {
-                $sql = "SELECT agency_id FROM Agency";
+                $sql = "SELECT DISTINCT * FROM Forecast NATURAL JOIN Problem NATURAL JOIN Aspect NATURAL JOIN Forecaster NATURAL JOIN Agency WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6 LIMIT 5;";
                 build_table($sql, $db);
             } else if (isset($_POST['canned_query_3'])) {
                 $sql = "SELECT danger_at_treeline FROM Forecast";
@@ -98,12 +98,23 @@
 
          <!-- List several buttons/descriptions for precanned queries-->
         <h2>Precanned Queries</h2>
+
+        <!-- Query 1 -->
         <form method="post">
             <h4>Canned Query 1: Most common avalanche problem type for Utah</h4>
             <p> Identify the single most common type of problem from all forecasts issued by forecasters who work for the Utah Avalanche Center (agency_id=1). Return the agency name, the problem type, and the total count identified.</p> 
             <p>SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) <br>FROM Forecast as fr <br>INNER JOIN Problem as p <br>ON fr.fid = p.fid <br>INNER JOIN Agency as a <br>ON fr.issued_by = a.agency_id <br>WHERE issued_by=1 <br>GROUP BY p.problem_type <br>ORDER BY COUNT (p.problem_type) DESC <br>LIMIT 1; </p>
             <input type='submit' name="canned_query_1" value="Submit Query 1"><br>
         </form>
+        
+        <!-- Query 2 -->
+        <form method="post">
+            <h4>Canned Query 2: Find all eastern aspect forecasts from Colorado and Utah </h4>
+            <p> Find all forecasts from Colorado (agency_id=6) and Utah (agency_id = 1) where some problem exists on an eastern aspect.</p> 
+            <p>SELECT DISTINCT * <br> FROM Forecast <br> NATURAL JOIN Problem <br> NATURAL JOIN Aspect <br> NATURAL JOIN Forecaster <br> NATURAL JOIN Agency <br> WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6 <br> LIMIT 5; </p>
+            <input type='submit' name="canned_query_2" value="Submit Query 2"><br>
+        </form>
+        
         <form method="post">
             <h4>Canned Query 2: SELECT agency_id FROM Agency</h4>
             <input type='submit' name="canned_query_2" value="Submit Query 2"><br>
