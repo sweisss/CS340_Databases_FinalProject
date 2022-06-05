@@ -1,64 +1,108 @@
 Part 4: Sample Data Basic Queries
 
-SELECT * FROM Agency LIMIT 5;
-0|Central Oregon Avalanche Center|https://www.coavalanche.org/
-1|Utah Avalanche Center|https://utahavalanchecenter.org/
-2|Sierra Avalanche Center|https://www.sierraavalanchecenter.org/
-3|Wallowa Avalanche Center|https://wallowaavalanchecenter.org/
-4|Sawtooth Avalanche Center|https://www.sawtoothavalanche.com/
+sqlite> SELECT * FROM Agency LIMIT 5;
+┌───────────┬─────────────────────────────────┬────────────────────────────────────────┐
+│ agency_id │           agency_name           │              website_url               │
+├───────────┼─────────────────────────────────┼────────────────────────────────────────┤
+│ 0         │ Central Oregon Avalanche Center │ https://www.coavalanche.org/           │
+│ 1         │ Utah Avalanche Center           │ https://utahavalanchecenter.org/       │
+│ 2         │ Sierra Avalanche Center         │ https://www.sierraavalanchecenter.org/ │
+│ 3         │ Wallowa Avalanche Center        │ https://wallowaavalanchecenter.org/    │
+│ 4         │ Sawtooth Avalanche Center       │ https://www.sawtoothavalanche.com/     │
+└───────────┴─────────────────────────────────┴────────────────────────────────────────┘
 
+sqlite> SELECT * FROM Forecaster LIMIT 5;
+┌───────────┬─────────┬──────────┬───────────┐
+│ frcstr_id │  fname  │  lname   │ agency_id │
+├───────────┼─────────┼──────────┼───────────┤
+│ 0         │ Joe     │ Smith    │ 0         │
+│ 1         │ Jane    │ Jones    │ 6         │
+│ 2         │ John    │ Lee      │ 1         │
+│ 3         │ Jessica │ Thompson │ 2         │
+│ 4         │ Jimmy   │ Thompson │ 2         │
+└───────────┴─────────┴──────────┴───────────┘
 
-SELECT * FROM Agency LIMIT 5;
-0|Central Oregon Avalanche Center|https://www.coavalanche.org/
-1|Utah Avalanche Center|https://utahavalanchecenter.org/
-2|Sierra Avalanche Center|https://www.sierraavalanchecenter.org/
-3|Wallowa Avalanche Center|https://wallowaavalanchecenter.org/
-4|Sawtooth Avalanche Center|https://www.sawtoothavalanche.com/
+sqlite> SELECT * FROM Forecast LIMIT 5;
+┌─────┬────────────┬───────────────────────┬────────────────────┬───────────────────────┬───────────┬───────────────────────┐
+│ fid │ issue_date │ danger_below_treeline │ danger_at_treeline │ danger_above_treeline │ issued_by │    corresponds_to     │
+├─────┼────────────┼───────────────────────┼────────────────────┼───────────────────────┼───────────┼───────────────────────┤
+│ 0   │ 12-2-21    │ 0                     │ 1                  │ 1                     │ 0         │ Central Cascades      │
+│ 1   │ 12-26-21   │ 1                     │ 1                  │ 1                     │ 1         │ Southern Mountains    │
+│ 2   │ 1/1/2022   │ 2                     │ 2                  │ 3                     │ 2         │ Uintas                │
+│ 3   │ 1/1/2022   │ 2                     │ 2                  │ 2                     │ 3         │ Central Sierra Nevada │
+│ 4   │ 1/1/2022   │ 1                     │ 2                  │ 3                     │ 4         │ Central Sierra Nevada │
+└─────┴────────────┴───────────────────────┴────────────────────┴───────────────────────┴───────────┴───────────────────────┘
 
+sqlite> SELECT * FROM Problem LIMIT 5;
+┌─────┬─────┬──────────────┬──────┬────────────┐
+│ pid │ fid │ problem_type │ size │ likelihood │
+├─────┼─────┼──────────────┼──────┼────────────┤
+│ 0   │ 0   │ Loose Dry    │ 1    │ 1          │
+│ 1   │ 0   │ Wind Slab    │ 2    │ 1          │
+│ 2   │ 1   │ Storm Slab   │ 3    │ 4          │
+│ 3   │ 1   │ Wind Slab    │ 3    │ 4          │
+│ 4   │ 2   │ Wind Slab    │ 3    │ 4          │
+└─────┴─────┴──────────────┴──────┴────────────┘
 
-SELECT * FROM Forecast LIMIT 5;
-0|12-2-21|0|1|1|0|Central Cascades
-1|12-26-21|1|1|1|1|Southern Mountains
-2|1/1/2022|2|2|3|2|Uintas
-3|1/1/2022|2|2|2|3|Central Sierra Nevada
-4|1/1/2022|1|2|3|4|Central Sierra Nevada
+sqlite> SELECT * FROM Elevation LIMIT 5;
+┌─────┬───────────┐
+│ pid │ elevation │
+├─────┼───────────┤
+│ 0   │ 1         │
+│ 1   │ 1         │
+│ 2   │ 2         │
+│ 3   │ 3         │
+│ 4   │ 2         │
+└─────┴───────────┘
 
+sqlite> SELECT * FROM Aspect LIMIT 5;
+┌─────┬────────┐
+│ pid │ aspect │
+├─────┼────────┤
+│ 0   │ N      │
+│ 1   │ NE     │
+│ 2   │ E      │
+│ 3   │ SE     │
+│ 4   │ S      │
+└─────┴────────┘
 
-SELECT * FROM Forecaster LIMIT 5;
-0|Joe|Smith|0
-1|Jane|Jones|6
-2|John|Lee|1
-3|Jessica|Thompson|2
-4|Jimmy|Thompson|2
+sqlite> SELECT * FROM Observation LIMIT 5;
+┌────────────────┬──────────────────┬───────────┬──────────────────────┬─────────────────────────────────┬─────────────┬──────────────────────────────────────────────────────────────────────────────────┐
+│ observation_id │ observation_date │ avalanche │ observation_location │            zone_name            │ observer_id │                              
+   obs_description                                  │
+├────────────────┼──────────────────┼───────────┼──────────────────────┼─────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────┤
+│ 0              │ 12-2-21          │ 0         │ Tam McArthur Rim     │ Central Cascades                │ 0           │ Dug a hand pit, good bonding.                                                    │
+│ 1              │ 12-15-21         │ 1         │ Mineral Fork         │ Uintas                          │ 1           │ Saw remenants of slide. No cracking or wumphing.                                 │
+│ 2              │ 12-26-21         │ 1         │ Elephant's Hump      │ Central Sierra Nevada           │ 2           │ Huge slide off the hump, most likely human triggered.                            │
+│ 3              │ 1-2-22           │ 0         │ Jackson Peak         │ Northern Wallowas               │ 3           │ Great snow, no cracks or wumphing, pit revealed potential persistent weak layer. │
+│ 4              │ 1-14-22          │ 1         │ Avalanche Peak       │ Sawtooth and Western Smoky Mtns │ 4           │ Observered an avalanche on Avalanceh Peak!                                       │
+└────────────────┴──────────────────┴───────────┴──────────────────────┴─────────────────────────────────┴─────────────┴──────────────────────────────────────────────────────────────────────────────────┘
 
+sqlite> SELECT * FROM Observer LIMIT 5;
+┌─────────────┬─────────┬──────────┬───────────────┐
+│ observer_id │  fname  │  lname   │ observer_type │
+├─────────────┼─────────┼──────────┼───────────────┤
+│ 0           │ Joe     │ Smith    │ Forecaster    │
+│ 1           │ Jane    │ Jones    │ Forecaster    │
+│ 2           │ John    │ Lee      │ Forecaster    │
+│ 3           │ Jessica │ Thompson │ Forecaster    │
+│ 4           │ Jimmy   │ Thompson │ Forecaster    │
+└─────────────┴─────────┴──────────┴───────────────┘
 
-SELECT * FROM Problem LIMIT 5;
-0|0|Loose Dry|1|1
-1|0|Wind Slab|2|1
-2|12-26-21|1|Elephant's Hump|Central Sierra Nevada|2|Huge slide off the hump, most likely human triggered.
-3|1-2-22|0|Jackson Peak|Northern Wallowas|3|Great snow, no cracks or wumphing, pit revealed potential persistent weak layer.
-4|1-14-22|1|Avalanche Peak|Sawtooth and Western Smoky Mtns|4|Observered an avalanche on Avalanceh Peak!
-
-
-SELECT * FROM Observer LIMIT 5;
-0|Joe|Smith|Forecaster
-1|Jane|Jones|Forecaster
-2|John|Lee|Forecaster
-3|Jessica|Thompson|Forecaster
-4|Jimmy|Thompson|Forecaster
-
-
-SELECT * FROM Zone LIMIT 5;
-Central Cascades|0
-Uintas|1
-Central Sierra Nevada|2
-Northern Wallowas|3
-Sawtooth and Western Smoky Mtns|4
-
+sqlite> SELECT * FROM Zone LIMIT 5;
+┌─────────────────────────────────┬───────────┐
+│            zone_name            │ agency_id │
+├─────────────────────────────────┼───────────┤
+│ Central Cascades                │ 0         │
+│ Uintas                          │ 1         │
+│ Central Sierra Nevada           │ 2         │
+│ Northern Wallowas               │ 3         │
+│ Sawtooth and Western Smoky Mtns │ 4         │
+└─────────────────────────────────┴───────────┘
 
 
 Part 5: Interesting Queries
-Note: All 5 of these queries are built into the PHP front end as canned transactions. Running them there will give prettier results with a formatted table and column headers.
+
 1) Find the most common avalanche problem in Utah
 SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
 FROM Forecast as fr
@@ -70,37 +114,53 @@ WHERE issued_by=1
 GROUP BY p.problem_type
 ORDER BY COUNT (p.problem_type) DESC
 LIMIT 1; 
-Utah Avalanche Center|Wind Slab|2
+┌───────────────────────┬──────────────┬───────────────────────┐
+│      agency_name      │ problem_type │ COUNT(p.problem_type) │
+├───────────────────────┼──────────────┼───────────────────────┤
+│ Utah Avalanche Center │ Wind Slab    │ 2                     │
+└───────────────────────┴──────────────┴───────────────────────┘
 
 
-2) Find all eastern aspect forecasts from Colorado and Utah 
-SELECT DISTINCT *
-FROM Forecast
-NATURAL JOIN Problem
-NATURAL JOIN Aspect
-NATURAL JOIN Forecaster
-NATURAL JOIN Agency
-WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6
+2) Search forecasts from Colorado (agency id of 6) which have a problem on an eastern aspect and return an overview of each problem. 
+SELECT DISTINCT p.pid ,fr.issue_date, ag.agency_name, fr.corresponds_to as Zone, p.problem_type, p.size, p.likelihood, a.aspect, e.elevation
+FROM Forecast as fr
+JOIN Problem as p
+ON fr.fid = p.fid
+JOIN Aspect as a 
+ON p.pid = a.pid
+JOIN Elevation as e 
+ON p.pid = e.pid
+JOIN Forecaster as f
+ON fr.issued_by = f.frcstr_id
+JOIN Agency as ag
+ON ag.agency_id = f.agency_id
+WHERE a.aspect = "E" AND ag.agency_id=6
 LIMIT 5;
-0|12-2-21|0|1|1|0|Central Cascades|0|Loose Dry|1|1|N|1|Jane|Jones|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
-0|12-2-21|0|1|1|0|Central Cascades|0|Loose Dry|1|1|N|8|Joey JoJo Jr.|Shabadoo|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
-0|12-2-21|0|1|1|0|Central Cascades|1|Wind Slab|2|1|NE|1|Jane|Jones|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
-0|12-2-21|0|1|1|0|Central Cascades|1|Wind Slab|2|1|NE|8|Joey JoJo Jr.|Shabadoo|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
-1|12-26-21|1|1|1|1|Southern Mountains|2|Storm Slab|3|4|E|2|John|Lee|1|Utah Avalanche Center|https://utahavalanchecenter.org/
+┌─────┬────────────┬───────────────────────────────────────┬────────────────────┬──────────────────┬──────┬────────────┬────────┬───────────┐
+│ pid │ issue_date │              agency_name              │        Zone        │   problem_type   │ size │ likelihood │ aspect │ elevation │
+├─────┼────────────┼───────────────────────────────────────┼────────────────────┼──────────────────┼──────┼────────────┼────────┼───────────┤
+│ 2   │ 12-26-21   │ Colorado Avalanche Information Center │ Southern Mountains │ Storm Slab       │ 3    │ 4          │ E      │ 2         │
+│ 15  │ 1/2/2022   │ Colorado Avalanche Information Center │ Southern Mountains │ Cornice Collapse │ 2    │ 3          │ E      │ 1         │
+│ 21  │ 1/3/2022   │ Colorado Avalanche Information Center │ Southern Mountains │ Persistent Slab  │ 1    │ 2          │ E      │ 1         │
+└─────┴────────────┴───────────────────────────────────────┴────────────────────┴──────────────────┴──────┴────────────┴────────┴───────────┘
 
 
-3) Find all forecasts that involve a Wind Slab problem, order first by region then by issue date.  
-SELECT * 
+3) Find all forecasts that involve a Wind Slab problem, order first by zone (corresponds_to) then by issue date.  
+SELECT fid, issue_date, danger_below_treeline, danger_at_treeline, danger_above_treeline, issued_by as Agency, corresponds_to AS Zone, pid, problem_type, size, likelihood
 FROM Forecast 
 NATURAL JOIN Problem 
 WHERE problem.problem_type = "Wind Slab"
 ORDER BY corresponds_to, issue_date
 LIMIT 5;
-0|12-2-21|0|1|1|0|Central Cascades|1|Wind Slab|2|1
-3|1/1/2022|2|2|2|3|Central Sierra Nevada|6|Wind Slab|3|2
-4|1/1/2022|1|2|3|4|Central Sierra Nevada|8|Wind Slab|2|2
-10|1/3/2022|1|1|1|10|Sawtooth and Western Smoky Mtns|18|Wind Slab|1|3
-8|1/2/2022|3|4|4|8|Southern Mountains|14|Wind Slab|2|4
+┌─────┬────────────┬───────────────────────┬────────────────────┬───────────────────────┬────────┬─────────────────────────────────┬─────┬──────────────┬──────┬────────────┐
+│ fid │ issue_date │ danger_below_treeline │ danger_at_treeline │ danger_above_treeline │ Agency │              Zone               │ pid │ problem_type │ size │ likelihood │
+├─────┼────────────┼───────────────────────┼────────────────────┼───────────────────────┼────────┼─────────────────────────────────┼─────┼──────────────┼──────┼────────────┤
+│ 0   │ 12-2-21    │ 0                     │ 1                  │ 1                     │ 0      │ Central Cascades                │ 1   │ Wind Slab    │ 2    │ 1          │
+│ 3   │ 1/1/2022   │ 2                     │ 2                  │ 2                     │ 3      │ Central Sierra Nevada           │ 6   │ Wind Slab    │ 3    │ 2          │
+│ 4   │ 1/1/2022   │ 1                     │ 2                  │ 3                     │ 4      │ Central Sierra Nevada           │ 8   │ Wind Slab    │ 2    │ 2          │
+│ 10  │ 1/3/2022   │ 1                     │ 1                  │ 1                     │ 10     │ Sawtooth and Western Smoky Mtns │ 18  │ Wind Slab    │ 1    │ 3          │
+│ 8   │ 1/2/2022   │ 3                     │ 4                  │ 4                     │ 8      │ Southern Mountains              │ 14  │ Wind Slab    │ 2    │ 4          │
+└─────┴────────────┴───────────────────────┴────────────────────┴───────────────────────┴────────┴─────────────────────────────────┴─────┴──────────────┴──────┴────────────┘
 
 
 4) Find all observation data from Oregon
@@ -115,11 +175,21 @@ NATURAL JOIN Zone AS z
 NATURAL JOIN Agency AS a 
 WHERE agency_id IN (0, 3)
 LIMIT 5;
+┌──────────────────┬───────────────────┬──────────────────────┬───────────┬──────────────────────────────────────────────────────────────────────────────────┐
+│ observation_date │     zone_name     │ observation_location │ avalanche │                                 obs_description                                  │
+├──────────────────┼───────────────────┼──────────────────────┼───────────┼──────────────────────────────────────────────────────────────────────────────────┤
+│ 12-2-21          │ Central Cascades  │ Tam McArthur Rim     │ No        │ Dug a hand pit, good bonding.                                                    │
+│ 1-2-22           │ Northern Wallowas │ Jackson Peak         │ No        │ Great snow, no cracks or wumphing, pit revealed potential persistent weak layer. │
+└──────────────────┴───────────────────┴──────────────────────┴───────────┴──────────────────────────────────────────────────────────────────────────────────┘
 
 
 5) Find the first and last name of forecasters who have not contributed an observation
 SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL;
-Jorge|Lopez
-Joey JoJo Jr.|Shabadoo
-Big|Foot
-Healy|Fettuccine
+┌───────────────┬────────────┐
+│     fname     │   lname    │
+├───────────────┼────────────┤
+│ Jorge         │ Lopez      │
+│ Joey JoJo Jr. │ Shabadoo   │
+│ Big           │ Foot       │
+│ Healy         │ Fettuccine │
+└───────────────┴────────────┘
