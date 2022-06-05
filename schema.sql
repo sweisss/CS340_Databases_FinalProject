@@ -314,3 +314,15 @@ INSERT INTO Zone VALUES ("Northern Wallowas", 3);
 INSERT INTO Zone VALUES ("Sawtooth and Western Smoky Mtns", 4);
 INSERT INTO Zone VALUES ("West Slopes South", 5);
 INSERT INTO Zone VALUES ("Southern Mountains", 6);
+
+
+-- Sample Queries ----------------------------------------------------------------
+SELECT * FROM Agency LIMIT 5;
+SELECT * FROM Forecast LIMIT 5;
+SELECT * FROM Forecaster LIMIT 5;
+SELECT * FROM Problem LIMIT 5;
+SELECT * FROM Elevation LIMIT 5;
+SELECT * FROM Aspect LIMIT 5;
+SELECT * FROM Observation LIMIT 5;
+SELECT * FROM Observer LIMIT 5;
+SELECT * FROM Zone LIMIT 5;

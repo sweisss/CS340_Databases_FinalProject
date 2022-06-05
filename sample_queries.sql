@@ -1,7 +1,13 @@
 ---Part 4: Sample Data Basic Queries
 SELECT * FROM Agency LIMIT 5;
-
-
+SELECT * FROM Forecast LIMIT 5;
+SELECT * FROM Forecaster LIMIT 5;
+SELECT * FROM Problem LIMIT 5;
+SELECT * FROM Elevation LIMIT 5;
+SELECT * FROM Aspect LIMIT 5;
+SELECT * FROM Observation LIMIT 5;
+SELECT * FROM Observer LIMIT 5;
+SELECT * FROM Zone LIMIT 5;
 
 --Part 5: Sample Transactions
 --For this part, you will submit five example transactions (use cases). 
