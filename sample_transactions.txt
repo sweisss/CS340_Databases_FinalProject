@@ -68,8 +68,7 @@ sqlite> SELECT * FROM Aspect LIMIT 5;
 
 sqlite> SELECT * FROM Observation LIMIT 5;
 ┌────────────────┬──────────────────┬───────────┬──────────────────────┬─────────────────────────────────┬─────────────┬──────────────────────────────────────────────────────────────────────────────────┐
-│ observation_id │ observation_date │ avalanche │ observation_location │            zone_name            │ observer_id │                              
-   obs_description                                  │
+│ observation_id │ observation_date │ avalanche │ observation_location │            zone_name            │ observer_id │                                 obs_description                                  │
 ├────────────────┼──────────────────┼───────────┼──────────────────────┼─────────────────────────────────┼─────────────┼──────────────────────────────────────────────────────────────────────────────────┤
 │ 0              │ 12-2-21          │ 0         │ Tam McArthur Rim     │ Central Cascades                │ 0           │ Dug a hand pit, good bonding.                                                    │
 │ 1              │ 12-15-21         │ 1         │ Mineral Fork         │ Uintas                          │ 1           │ Saw remenants of slide. No cracking or wumphing.                                 │
@@ -103,7 +102,7 @@ sqlite> SELECT * FROM Zone LIMIT 5;
 
 Part 5: Interesting Queries
 
-1) Find the most common avalanche problem in Utah
+1) Find the most common avalanche problem in Utah.
 SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
 FROM Forecast as fr
 INNER JOIN Problem as p
@@ -145,7 +144,7 @@ LIMIT 5;
 └─────┴────────────┴───────────────────────────────────────┴────────────────────┴──────────────────┴──────┴────────────┴────────┴───────────┘
 
 
-3) Find all forecasts that involve a Wind Slab problem, order first by zone (corresponds_to) then by issue date.  
+3) Find all forecasts that involve a Wind Slab problem. Order first by zone (corresponds_to) then by issue date.  
 SELECT fid, issue_date, danger_below_treeline, danger_at_treeline, danger_above_treeline, issued_by as Agency, corresponds_to AS Zone, pid, problem_type, size, likelihood
 FROM Forecast 
 NATURAL JOIN Problem 
@@ -163,7 +162,7 @@ LIMIT 5;
 └─────┴────────────┴───────────────────────┴────────────────────┴───────────────────────┴────────┴─────────────────────────────────┴─────┴──────────────┴──────┴────────────┘
 
 
-4) Find all observation data from Oregon
+4) Find all observation data from Oregon.
 SELECT DISTINCT 
     o.observation_date, 
     z.zone_name, 
@@ -183,7 +182,7 @@ LIMIT 5;
 └──────────────────┴───────────────────┴──────────────────────┴───────────┴──────────────────────────────────────────────────────────────────────────────────┘
 
 
-5) Find the first and last name of forecasters who have not contributed an observation
+5) Find the first and last name of forecasters who have not contributed an observation.
 SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname IS NULL;
 ┌───────────────┬────────────┐
 │     fname     │   lname    │

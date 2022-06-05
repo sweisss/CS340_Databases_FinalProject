@@ -117,7 +117,7 @@
 
         <!-- Query 1 -->
         <form method="post">
-            <h4>Canned Query 1: Most common avalanche problem type for Utah</h4>
+            <h4>Canned Query 1: Find the most common avalanche problem in Utah.</h4>
             <p> Identify the single most common type of problem from all forecasts issued by forecasters who work for the Utah Avalanche Center (agency_id=1). Return the agency name, the problem type, and the total count identified.</p> 
             
             <p>SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) <br>FROM Forecast as fr <br>INNER JOIN Problem as p <br>ON fr.fid = p.fid <br>INNER JOIN Agency as a <br>ON fr.issued_by = a.agency_id <br>WHERE issued_by=1 <br>GROUP BY p.problem_type <br>ORDER BY COUNT (p.problem_type) DESC <br>LIMIT 1;</p>
@@ -135,7 +135,7 @@
 
         <!-- Query 3 -->
         <form method="post">
-            <h4>Canned Query 3: Find all forecasts that involve a Wind Slab problem. Order first by region then by issue date.  </h4>
+            <h4>Canned Query 3: Find all forecasts that involve a Wind Slab problem. Order first by zone (corresponds_to) then by issue date.  </h4>
             
             <p>SELECT fid, issue_date, danger_below_treeline, danger_at_treeline, danger_above_treeline, issued_by as Agency, corresponds_to AS Zone, pid, problem_type, size, likelihood <br>FROM Forecast  <br>NATURAL JOIN Problem  <br>WHERE problem.problem_type = "Wind Slab" <br>ORDER BY corresponds_to, issue_date <br>LIMIT 5;</p>
             <input type='submit' name="canned_query_3" value="Submit Query 3"><br>
