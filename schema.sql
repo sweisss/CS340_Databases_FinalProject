@@ -173,7 +173,8 @@ CREATE TABLE Elevation (
     pid INTEGER NOT NULL,
     elevation INTEGER NOT NULL,
     PRIMARY KEY (pid, elevation)
-    FOREIGN KEY (pid) REFERENCES Problem (pid)
+    FOREIGN KEY (pid) REFERENCES Problem (pid),
+    CHECK (elevation>=0 AND elevation<=5 )
 );
 
 --Populate the Elevation table
@@ -263,7 +264,8 @@ CREATE TABLE Observation (
     observer_id INTEGER,
     obs_description TEXT, 
     FOREIGN KEY (zone_name) REFERENCES Zone(zone_name),
-    FOREIGN KEY (observer_id) REFERENCES Observer(observer_id)
+    FOREIGN KEY (observer_id) REFERENCES Observer(observer_id),
+    CHECK (avalanche=0 OR avalanche=1 )
 );
 
 --Populate the Observation table
