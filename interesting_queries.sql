@@ -6,26 +6,6 @@
 --HAVING, UNION, aggregation, and/or nested queries.
 
 -- 1) Find the most common avalanche problem in Utah (it should be Wind Slab with a count of 2)
--- SELECT a.agency_name, p.problem_type, MAX(prob_count) --COUNT(p.problem_type)
--- FROM (SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) AS prob_count
---     FROM Problem AS p
---     NATURAL JOIN Forecast AS f
---     NATURAL JOIN Forecaster AS fr 
---     NATURAL JOIN Agency AS a 
---     --WHERE a.agency_id=1
---     ORDER BY COUNT(p.problem_type) DESC LIMIT 1)
--- GROUP BY a.agency_id;
-
--- SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
--- FROM Problem AS p
--- NATURAL JOIN Forecast AS f
--- NATURAL JOIN Forecaster AS fr 
--- NATURAL JOIN Agency AS a 
--- WHERE a.agency_id=1
--- GROUP BY a.agency_name, p.problem_type 
--- ORDER BY a.agency_name,COUNT(p.problem_type) DESC LIMIT 5;
-
--- This almost works, the count is still counting the overall total though. 
 SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
 FROM Forecast as fr
 INNER JOIN Problem as p
