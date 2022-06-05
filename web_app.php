@@ -1,6 +1,6 @@
 <html>
 <?php 
-    // Create aa new database named server.db
+    // Create a new database named server.db
     $db = new SQLite3('server.db');
 
     // Load sql commands for building and populated the db
@@ -9,6 +9,10 @@
     // Execute build commands
     $db->exec($build_db_commands);
 
+    // Define a core function that, given an sql query and a database instance, will:
+    // - Query the db
+    // - Fetch results
+    // - Render an html table to show the results
     function build_table($sql, $db) {
         echo "Results shown for query:  ";
         echo $sql;
@@ -19,7 +23,7 @@
         // Start building the result table
         echo "<table style=\"width:100%\">";
         
-        // Build the Header
+        // Build the Header by fetching each column name
         echo "<tr>";
         $numColumns = $res->numColumns();
         for ($i = 0; $i < $numColumns; $i++) 
@@ -56,11 +60,11 @@
         <title>CS340 Final</title>
     </head>
     <body>
+         <!-- Header info/text -->
         <h1>CS 340 Final Project</h1>
         <h2>Seth Weiss and Orion Junkins</h2>
         <h2>Spring 2022</h2>
         <p>Enter a custom query or select a pre-canned query from below.<p>
-        <!-- insert description of web page here/user instructions -->
 
         <!-- Build a text box with a submit button -->
         <!-- On submit, a post request is sent to web_app.php -->
@@ -74,7 +78,7 @@
         </form>
 
         <?php 
-            // Grab the 'query' value from the POST reqeust if it exists
+            // Get the query specified and build a table
             if (isset($_POST['query'])) {
                 $sql = $_POST['query'];
                 build_table($sql, $db);
@@ -91,6 +95,8 @@
                 echo "<br>Please input a query</br>";
             }            
         ?> 
+
+         <!-- List several buttons/descriptions for precanned queries-->
         <h2>Precanned Queries</h2>
         <form method="post">
             <h4>Canned Query 1: SELECT * FROM Forecast NATURAL JOIN Problem</h4>
