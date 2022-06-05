@@ -4,7 +4,7 @@
     $db = new SQLite3('server.db');
 
     // Load sql commands for building and populated the db
-    $build_db_commands = file_get_contents("Junkins_Weiss_FinalProject_SQLSchema.sql");
+    $build_db_commands = file_get_contents("schema.sql");
     
     // Execute build commands
     $db->exec($build_db_commands);
