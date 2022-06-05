@@ -26,22 +26,16 @@
 -- ORDER BY a.agency_name,COUNT(p.problem_type) DESC LIMIT 5;
 
 -- This almost works, the count is still counting the overall total though. 
-SELECT a.agency_name, p.problem_type, COUNT(p.problem_type) 
-FROM Problem AS p  
-NATURAL JOIN Forecast AS f
-NATURAL JOIN Forecaster AS fr 
-NATURAL JOIN Agency AS a 
-WHERE a.agency_id=1
-GROUP BY p.problem_type 
-HAVING COUNT (p.problem_type)=( 
-SELECT MAX(mycount) 
-FROM ( 
-SELECT p.problem_type, COUNT(p.problem_type) mycount 
-FROM Problem AS p 
-GROUP BY p.problem_type));
-
-
-
+SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
+FROM Forecast as fr
+INNER JOIN Problem as p
+ON fr.fid = p.fid
+INNER JOIN Agency as a
+ON fr.issued_by = a.agency_id
+WHERE issued_by=1
+GROUP BY p.problem_type
+ORDER BY COUNT (p.problem_type) DESC
+LIMIT 1; 
 
 -- 2) Find all eastern aspect forecasts from Colorado and Utah 
 SELECT DISTINCT *
