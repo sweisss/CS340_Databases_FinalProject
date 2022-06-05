@@ -128,7 +128,9 @@ CREATE TABLE Problem (
     size INTEGER,
     likelihood INTEGER,
     PRIMARY KEY (pid),
-    FOREIGN KEY (fid) REFERENCES Forecast(fid)
+    FOREIGN KEY (fid) REFERENCES Forecast(fid),
+    CHECK (size>=0 AND size<=5 ), 
+    CHECK (likelihood>=0 AND likelihood<=5 ) 
 );
 
 --Populate the Problem table
