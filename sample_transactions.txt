@@ -1,0 +1,125 @@
+Part 4: Sample Data Basic Queries
+
+SELECT * FROM Agency LIMIT 5;
+0|Central Oregon Avalanche Center|https://www.coavalanche.org/
+1|Utah Avalanche Center|https://utahavalanchecenter.org/
+2|Sierra Avalanche Center|https://www.sierraavalanchecenter.org/
+3|Wallowa Avalanche Center|https://wallowaavalanchecenter.org/
+4|Sawtooth Avalanche Center|https://www.sawtoothavalanche.com/
+
+
+SELECT * FROM Agency LIMIT 5;
+0|Central Oregon Avalanche Center|https://www.coavalanche.org/
+1|Utah Avalanche Center|https://utahavalanchecenter.org/
+2|Sierra Avalanche Center|https://www.sierraavalanchecenter.org/
+3|Wallowa Avalanche Center|https://wallowaavalanchecenter.org/
+4|Sawtooth Avalanche Center|https://www.sawtoothavalanche.com/
+
+
+SELECT * FROM Forecast LIMIT 5;
+0|12-2-21|0|1|1|0|Central Cascades
+1|12-26-21|1|1|1|1|Southern Mountains
+2|1/1/2022|2|2|3|2|Uintas
+3|1/1/2022|2|2|2|3|Central Sierra Nevada
+4|1/1/2022|1|2|3|4|Central Sierra Nevada
+
+
+SELECT * FROM Forecaster LIMIT 5;
+0|Joe|Smith|0
+1|Jane|Jones|6
+2|John|Lee|1
+3|Jessica|Thompson|2
+4|Jimmy|Thompson|2
+
+
+SELECT * FROM Problem LIMIT 5;
+0|0|Loose Dry|1|1
+1|0|Wind Slab|2|1
+2|12-26-21|1|Elephant's Hump|Central Sierra Nevada|2|Huge slide off the hump, most likely human triggered.
+3|1-2-22|0|Jackson Peak|Northern Wallowas|3|Great snow, no cracks or wumphing, pit revealed potential persistent weak layer.
+4|1-14-22|1|Avalanche Peak|Sawtooth and Western Smoky Mtns|4|Observered an avalanche on Avalanceh Peak!
+
+
+SELECT * FROM Observer LIMIT 5;
+0|Joe|Smith|Forecaster
+1|Jane|Jones|Forecaster
+2|John|Lee|Forecaster
+3|Jessica|Thompson|Forecaster
+4|Jimmy|Thompson|Forecaster
+
+
+SELECT * FROM Zone LIMIT 5;
+Central Cascades|0
+Uintas|1
+Central Sierra Nevada|2
+Northern Wallowas|3
+Sawtooth and Western Smoky Mtns|4
+
+
+
+Part 5: Interesting Queries
+Note: All 5 of these queries are built into the PHP front end as canned transactions. Running them there will give prettier results with a formatted table and column headers.
+1) Find the most common avalanche problem in Utah
+SELECT a.agency_name, p.problem_type, COUNT(p.problem_type)
+FROM Forecast as fr
+INNER JOIN Problem as p
+ON fr.fid = p.fid
+INNER JOIN Agency as a
+ON fr.issued_by = a.agency_id
+WHERE issued_by=1
+GROUP BY p.problem_type
+ORDER BY COUNT (p.problem_type) DESC
+LIMIT 1; 
+Utah Avalanche Center|Wind Slab|2
+
+
+2) Find all eastern aspect forecasts from Colorado and Utah 
+SELECT DISTINCT *
+FROM Forecast
+NATURAL JOIN Problem
+NATURAL JOIN Aspect
+NATURAL JOIN Forecaster
+NATURAL JOIN Agency
+WHERE Aspect.aspect = "E" AND Agency.agency_id=1 OR Agency.agency_id=6
+LIMIT 5;
+0|12-2-21|0|1|1|0|Central Cascades|0|Loose Dry|1|1|N|1|Jane|Jones|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
+0|12-2-21|0|1|1|0|Central Cascades|0|Loose Dry|1|1|N|8|Joey JoJo Jr.|Shabadoo|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
+0|12-2-21|0|1|1|0|Central Cascades|1|Wind Slab|2|1|NE|1|Jane|Jones|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
+0|12-2-21|0|1|1|0|Central Cascades|1|Wind Slab|2|1|NE|8|Joey JoJo Jr.|Shabadoo|6|Colorado Avalanche Information Center|https://www.avalanche.state.co.us/
+1|12-26-21|1|1|1|1|Southern Mountains|2|Storm Slab|3|4|E|2|John|Lee|1|Utah Avalanche Center|https://utahavalanchecenter.org/
+
+
+3) Find all forecasts that involve a Wind Slab problem, order first by region then by issue date.  
+SELECT * 
+FROM Forecast 
+NATURAL JOIN Problem 
+WHERE problem.problem_type = "Wind Slab"
+ORDER BY corresponds_to, issue_date
+LIMIT 5;
+0|12-2-21|0|1|1|0|Central Cascades|1|Wind Slab|2|1
+3|1/1/2022|2|2|2|3|Central Sierra Nevada|6|Wind Slab|3|2
+4|1/1/2022|1|2|3|4|Central Sierra Nevada|8|Wind Slab|2|2
+10|1/3/2022|1|1|1|10|Sawtooth and Western Smoky Mtns|18|Wind Slab|1|3
+8|1/2/2022|3|4|4|8|Southern Mountains|14|Wind Slab|2|4
+
+
+4) Find all observation data from Oregon
+SELECT DISTINCT 
+    o.observation_date, 
+    z.zone_name, 
+    o.observation_location,
+    CASE WHEN avalanche = 0 THEN 'No' ELSE 'Yes' END AS avalanche, 
+    o.obs_description 
+FROM Observation AS o
+NATURAL JOIN Zone AS z
+NATURAL JOIN Agency AS a 
+WHERE agency_id IN (0, 3)
+LIMIT 5;
+
+
+5) Find the first and last name of forecasters who have not contributed an observation
+SELECT f.fname, f.lname FROM Forecaster AS f LEFT JOIN Observer AS o ON f.fname = o.fname WHERE o.fname iS NULL;
+Jorge|Lopez
+Joey JoJo Jr.|Shabadoo
+Big|Foot
+Healy|Fettuccine
