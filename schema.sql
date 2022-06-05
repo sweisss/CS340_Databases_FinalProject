@@ -93,7 +93,7 @@ CREATE TABLE Forecast (
     FOREIGN KEY (corresponds_to) REFERENCES Zone(zone_name),
     CHECK (danger_below_treeline>=0 AND danger_below_treeline<=5 ), 
     CHECK (danger_at_treeline>=0 AND danger_at_treeline<=5 ), 
-    CHECK (danger_above_treeline>=0 AND danger_above_treeline<=5 ), 
+    CHECK (danger_above_treeline>=0 AND danger_above_treeline<=5 ) 
 );
 
 --Populate the Forecast table
@@ -111,9 +111,7 @@ INSERT INTO Forecast VALUES (10, "1/3/2022", 1, 1, 1, 10, "Sawtooth and Western 
 INSERT INTO Forecast VALUES (11, "1/3/2022", 0, 1, 1, 1, "Southern Mountains");
 INSERT INTO Forecast VALUES (12, "1/3/2022", 0, 1, 1, 2, "Uintas");
 INSERT INTO Forecast VALUES (13, "1/3/2022", 2, 2, 3, 3, "Central Sierra Nevada");
-INSERT INTO Forecast VALUES (15, "1/3/2022", -1, 1, 1, 4, "Central Sierra Nevada");
-INSERT INTO Forecast VALUES (16, "1/3/2022", 1, -2, 1, 4, "Central Sierra Nevada");
-INSERT INTO Forecast VALUES (16, "1/3/2022", 1, 1, 7, 4, "Central Sierra Nevada");
+INSERT INTO Forecast VALUES (14, "1/3/2022", 1, 1, 1, 4, "Central Sierra Nevada");
 
 
 
