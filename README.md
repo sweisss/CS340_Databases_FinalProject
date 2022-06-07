@@ -23,3 +23,7 @@ Open a browser and navigate
 ```
 http://127.0.0.1:8000/web_app.php
 ```
+A video demonstration of the Web App can be found here:
+```
+https://www.youtube.com/watch?v=hUimRLaW3Ts
+```
