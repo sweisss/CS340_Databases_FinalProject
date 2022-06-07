@@ -1,3 +1,10 @@
+--CS340 Databases
+--Spring 2022
+--Final Project - SQL Schema Part 4/5: Simple Transactions and Interesting Queries
+--Seth Weiss, Orion Junkins
+--weissse@oregonstate.edu
+--junkinso@oregonstate.edu
+
 Part 4: Sample Data Basic Queries
 
 sqlite> SELECT * FROM Agency LIMIT 5;

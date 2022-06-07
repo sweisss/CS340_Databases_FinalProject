@@ -1,3 +1,10 @@
+<!-- CS340 Databases
+Spring 2022
+Final Project - SQL Schema Part 6: User-Interface
+Seth Weiss, Orion Junkins
+weissse@oregonstate.edu
+junkinso@oregonstate.edu -->
+
 <html>
 <?php 
     // Create a new database named server.db

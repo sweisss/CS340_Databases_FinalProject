@@ -1,6 +1,6 @@
 --CS340 Databases
 --Spring 2022
---Final Project - SQL Schema
+--Final Project - SQL Schema Part 4: SQL Schema
 --Seth Weiss, Orion Junkins
 --weissse@oregonstate.edu
 --junkinso@oregonstate.edu
