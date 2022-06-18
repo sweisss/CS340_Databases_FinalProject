@@ -1,6 +1,6 @@
 # Final project for CS340
 
-Created by Seth Weiss and Orion Junkins /n
+Created by Seth Weiss and Orion Junkins  
 A database of avalanche centers, forecasts, and observations in the U.S. 
 Includes an ER Diagram, a Relational Schema, a database built with SQLite, example queries, and a PHP web app for accessing the data. 
 
